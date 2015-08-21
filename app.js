@@ -12,8 +12,7 @@ var app = express();
 var fs = require('fs');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars'); //is a popular JavaScript template engine used in Meteor, 
-//It allows us to inject results from a function or object property directly into our html.
+app.set('view engine', 'handlebars'); 
 
 app.get('/product', function(req, res) { // app.get our product
 	var productMap = product.linesInFiles('./files/Nelisa Sales History.csv');
