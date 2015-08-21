@@ -14,6 +14,8 @@ var fs = require('fs');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars'); 
 
+app.use(express.static('public'));
+
 app.get('/product', function(req, res) { // app.get our product
 	var productMap = product.linesInFiles('./files/Nelisa Sales History.csv');
 	res.render('productList', {product: productMap}); // restart must render our productLists

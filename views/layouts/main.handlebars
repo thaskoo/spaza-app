@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Nelisa's spazza</title>
+    <!--<link rel="stylesheet" type="text/css" href="css.css">-->
 
 
     <!-- Latest compiled and minified CSS -->
@@ -10,40 +11,44 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<!--<link href="/public/css/main.css" rel="stylesheet">-->
-
+<link href="/css/main.css" rel="stylesheet">
 <!-- Latest compiled and minified JavaScript -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- <style>
-
-h1 {
-	text-align: center;
-	color: 5px solid black;
-}
-h3 {
-	text-align: center;
-	color: 5px solid black;
-	padding: 3px;
-
-}
-
-body {
-	font-size: 23px;
-	background-color: #EC0974;
-}
-li {
-   text-decoration: none;
-   border-radius: 10px;
-   list-style: none;
-}
- </style>
-
 </head>
-
- <body>
-
-    {{{body}}}
-
+<div class="nav-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        </div>
+ <body class="news">
+ 	<h1>Nelisa's Spazza-app</h1>
+  <header>
+    <div class="nav">
+      <ul>
+        <li class="home"><a href="">Home</a></li>
+        <li class="tutorials"><a href="#">Products</a>
+          <ul>
+            <li><a href="product">products</a></li>
+            <li><a href="/product/soldItem">SoldItems</a></li>
+            <li><a href="/product/mostPopularItems">Most</a></li>
+            <li><a href="/product/leastPopularProduct">Least</a></li>
+          </ul>
+        </li>
+            <li class="news"><a href="#">Categories</a>
+          <ul>
+            <li><a href="/product/productsSold">category</a></li>
+            <li><a href="/product/mostCategoryProduct">most</a></li>
+            <li><a href="/product/leastPopularCategory">least</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+  {{{body}}}
 </body>
+
 
 </html>
