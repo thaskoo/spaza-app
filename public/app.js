@@ -1,6 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
-var product = require('./productList'); // require our productlist
+var product = require('./productList'); // require our previously files/functions
 var soldItem = require('./productsSold');
 var mostPopularItems = require("./mostPopularItem");
 var category = require("./category");
