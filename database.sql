@@ -4,7 +4,6 @@ create table categories(
         category_name VARCHAR(50),
 	primary key(category_id)
 );
-
 DROP TABLE IF EXISTS `products`;
 create table products(
    product_id int not null auto_increment,
@@ -13,16 +12,16 @@ create table products(
 	primary key(product_id),
 	foreign key(category_id) REFERENCES categories(category_id)
 );
-
 DROP TABLE IF EXISTS `suppliers`;
 create table suppliers(
    supplier_id int not null auto_increment,
-        supplier_name VARCHAR(50),
+        supplier_name VARCHAR(50)not null,
 	primary key(supplier_id)
 );
 DROP TABLE IF EXISTS `sales`;
 create table sales (
    sale_id int not null auto_increment,
+	sales_date date not null,
         sales_price int,
 	qty int,
 	product_id int,
@@ -31,22 +30,17 @@ create table sales (
 );
 DROP TABLE IF EXISTS `purchases`;
 create table purchases (
-   purchase_id int not null auto_increment,
-	qty int,
+   	id int NOT NULL AUTO_INCREMENT,
+	Qty int,
 	cost_price int,
+	date NOT NULL,
 	product_id int,
 	supplier_id int,
-	primary key(purchase_id),
+	primary key(id),
 	foreign key(product_id) REFERENCES products(product_id),
-	foreign key(supplier_id) REFERENCES suppliers(supplier_id)
-	
+	foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
 );
-DROP TABLE IF EXISTS `mostProd`;
-create table mostProd (
-	mostProd_id int not null auto_increment,
-	product_name VARCHAR(100),
-	foreign key(product_id) REFERENCES products(product_id),
-	primary key(mostProd_id)
-);
+
+
 
 

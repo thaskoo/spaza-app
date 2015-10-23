@@ -1,0 +1,28 @@
+<form>
+	<!--<input name="addSales>"</input>-->
+	<!--<option value="product_name">product_name</option>-->
+	<input type="date">date</input>
+	<input number="R Price">Price</input>
+
+</form>
+
+<table>
+	<tr><thead>
+	<th>product_name</th>
+	<th>sales_date</th>
+	<th>sales_price</th>
+	<th>qty</th>
+
+</tr></thead>
+<tbody>
+{{#products}}
+<tr>
+<td>{{product_name}}</td>
+<td>{{sales_date}}</td>
+<td>R{{sales_price}}</td>
+<td>{{qty}}</td>
+
+</tr>
+{{/products}}
+</tbody>
+</table>
