@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: url("http://i.imgur.com/DBKG6Me.jpg");
+ background: #00ffff;
+
 }
 
 .nav ul {
@@ -10,7 +11,7 @@ body {
   text-align: center;
   padding: 0;
   margin: 0;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .nav li {
@@ -22,7 +23,7 @@ body {
 
 .nav a {
   text-decoration: none;
-  color: black;
+  color: blue;
   display: block;
   padding-left: 15px;
   border-bottom: 1px solid #888;
@@ -88,13 +89,19 @@ body {
   .nav li ul li {
     display: block;
   }
-}
 table, th, td {
 border:1px solid black;
-width: 120px;
-padding:15px;
+border-collapse: collapse;
+width: 900px;
+padding:16px;
 }
 
+table {
+margin-top: 30px;
+}
+form {
+ margin-top: 9px;
+}
 
 .navbar-header {
         display: none;

@@ -50,9 +50,13 @@ app.get('/products/delete/:id', products.delete);
 app.use(errorHandler);
 
 //setup the handlers
-app.get('/', sales.show);
 app.get('/sales', sales.show);
-app.get('/sales/edit/:id', sales.get);
+app.get('/addSales', sales.show);
+app.get('/sales/editSales/:id', sales.get);
+app.post('/sales/add', sales.add);
+app.get('/sales/update/:id', sales.update);
+app.get('/sales/delete/:id', sales.delete);
+
 
 app.use(errorHandler);
 

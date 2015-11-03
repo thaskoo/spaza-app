@@ -1,4 +1,4 @@
-<h1>Add</h1>
+<!--<h1>Add</h1>
 
 <form action="/products/add" method="POST">
 	product_name: <input type="text" name="product_name" value="{{product_name}}">
@@ -9,15 +9,4 @@
 	{{/categories}}
 	</select>
 	<input type="submit">
-
-
-<form action="/sales/add" method="POST">
-	sales_price : <input type="text" name="qty" value="{{qty}}">
-   <select name ="product_id">
-	{{#sales}}
-	<option value = "{{product_id}}">{{product_name}}
-	</option> 
-	{{/sales}}
-	</select>
-	<input type="submit">
-</form>
+</form>-->

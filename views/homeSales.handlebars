@@ -1,9 +1,11 @@
 {{home}}
-<h3>Sales</h3>
-<a href="/sales/add">Add sales</a>
 {{#sales}}
-  <h2>{{earnings}}</h2>
+  <h2>{{product_name}}</h2>
   <a href="/sales/edit/{{id}}">Edit</a>
   <a href="/sales/delete/{{id}}">Delete</a>
 {{/sales}}
+
+{{#no_products}}
+  <p>No sales available yet. Add some above.</p>
+{{/no_products}}
 {{body}}
