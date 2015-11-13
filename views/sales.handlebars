@@ -4,7 +4,7 @@
 <select name ="product_id">
 
 	{{#products}}
-	<option value = "{{id}}">{{product_name}}</option> 
+	<option value = "{{product_id}}">{{product_name}}</option> 
 	{{/products}}
 	</select>
 
@@ -35,8 +35,9 @@
 <td>R{{sales_price}}</td>
 <td>{{qty}}</td>
 
-<td> <a href="/sales/editSales/{{id}}">Edit</a>
-     <a href="/sales/delete/{{id}}">Delete</a>
+<td> 
+	<a href="/sales/editSales/{{sale_id}}">Edit</a>
+     <a href="/sales/delete/{{sale_id}}">Delete</a>
 </td>
 </tr>
 {{/sales}}

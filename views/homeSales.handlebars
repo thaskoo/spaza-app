@@ -1,11 +1,25 @@
 {{home}}
+<h1>sales</h1>
+<a href="/products/add">Add sales</a>
+<div class ="container" >
+	<table class ="col-xs-7">
 {{#sales}}
-  <h2>{{product_name}}</h2>
-  <a href="/sales/edit/{{id}}">Edit</a>
-  <a href="/sales/delete/{{id}}">Delete</a>
+<tr>
+		<td>
+			<h2>{{product_name}}</h2>
+		</td>
+
+  <td>
+			<a href="/products/edit/{{id}}">Edit</a>
+			<a href="/products/delete/{{id}}">Delete</a>
+		</td>
+
+		</tr>
 {{/sales}}
 
 {{#no_products}}
   <p>No sales available yet. Add some above.</p>
 {{/no_products}}
 {{body}}
+</table>
+	</div>

@@ -1,30 +1,32 @@
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
-		   connection.query('SELECT product_name, sales_date, sales_price, qty, product_name from sales INNER JOIN products ON products.product_id = sales.product_id', [], function(err, results) {
-    			connection.query('select * from products', function(err, products){
-        	     if (err) return next(err);
-    		      res.render( 'sales', {
-		          products:products,
-		          sales : results
-    	});
-     });
-   });
-});
+
+		connection.query('SELECT sale_id, product_name, sales_date, sales_price, qty, product_name from sales INNER JOIN products ON products.product_id = sales.product_id', [], function(err, results) {
+			if (err) return next(err);
+			connection.query('select * from products', function(err, products){
+    	     	if (err) return next(err);
+		      	res.render( 'sales', {
+	          		products:products,
+	          		sales : results
+				});
+ 			});
+		});
+	});
 };
 
 exports.addSales = function(req, res, next){
-
 	req.getConnection(function(err, connection){
 		 connection.query('select * from products', function(err, results) {
 	if(err)
 		return next(err);
 
 		    res.render('addSales',{
-			products : results,
+			products : products
 	});
     });
  });
+	console.log(results);
 };
 
 exports.add = function (req, res, next) {
@@ -32,10 +34,10 @@ exports.add = function (req, res, next) {
 		if (err) return next(err);
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-		product_id : input.product_id,
+		   product_id : input.product_id,
       		sales_date : input.sales_date,
-		 sales_price : input.sales_price,
-		 qty : input.qty
+		    sales_price : input.sales_price,
+		    qty : input.qty
 		 
   	};
 		connection.query('insert into sales set ?', data, function(err, results) {
@@ -44,14 +46,22 @@ exports.add = function (req, res, next) {
 		});
 	});
 };
+
 exports.get = function(req, res, next){
-	var sales_id = req.params.sale_id;
-	   req.getConnection(function(err, connection){
-		connection.query('SELECT * FROM sales WHERE sales_id = ?', [sales_id], function(err,rows){
-			if(err) return next(err);
-				res.render('edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
-		});
-	});
+	var id = req.params.id;
+	 req.getConnection(function(err, connection){
+		connection.query('SELECT  * FROM sales WHERE sale_id = ?', [id], function(err,rows){
+			if (err) return next(err);
+
+			connection.query('SELECT  * FROM products', function(err,products){
+				if(err) return next(err);
+				res.render('editSales',{page_title:"Edit Customers - Node.js",
+					data : rows[0],
+					products : products
+				});
+	       	});
+  		});
+	});		
 };
 
 exports.update = function(req, res, next){
@@ -59,17 +69,27 @@ exports.update = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
            var id = req.params.id;
               req.getConnection(function(err, connection){
-		 connection.query('UPDATE sales SET ? WHERE id = sales_id', [data,sales_id], function(err, rows){
+		        connection.query('UPDATE sales SET ? WHERE id = ?', [data,id], function(err, rows){
     		   if (err) next(err);
-                     res.redirect('/sales');
+                res.redirect('/sales');
+
+                     /*editSales = {
+                     	product_id : input.product_id,
+                     	product_name : input.product_name,
+                     	sales_date : input.sales_date,
+		                sales_price : input.sales_price,
+		                qty : input.qty
+                     }
+                     */
     		});
 
     });
 };
+
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){
-		connection.query('DELETE FROM sales WHERE id = sales_id', [sales_id], function(err,rows){
+		connection.query('DELETE FROM sales WHERE sale_id = ? ', [id], function(err,rows){
 		  if(err) return next(err);
 		    res.redirect('/sales');
 		});

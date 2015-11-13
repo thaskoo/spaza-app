@@ -1,49 +1,32 @@
-<!--{{home}}
-<h1>Addproducts</h1>
-<a href="/products/add"></a>
-{{#products}}
-<table>
-	<tr><thead>
-	<th>product_name</th>
-	<th>category_name</th>
-	<th>product_id</th>
-</tr></thead>
-<tbody>
-  <h2>{{product_name}}</h2>
-  <a href="/products/edit/{{id}}">Edit</a>
-  <a href="/products/delete/{{id}}">Delete</a>
-{{/products}}
-</table>-->
+{{home}}
+
+<h1>Products</h1>
 <a href="/products/add">Add Products</a>
-<!--<form>
-	<!--<input name="addSales>"</input>
-	<input type="text">product_name</input>
-	<input value="">category_name</input>
-	<input type="submit">
-
-</form>-->
-<head>
-  <h2>{{product_name}}</h2>
-  <a href="/products/products/{{id}}">Edit</a>
-  <a href="/products/delete/{{id}}">Delete</a>
-</head>
-<table>
-	<tr><thead>
-	<th>product_name</th>
-	<th>category_name</th>
-	<th>category_id</th>
-	<td>product_id</td>
-
-</tr></thead>
+<div class ="container" >
+	<table class ="col-xs-12">
+		<tr>
+			<thead>
+				<th><h2>Products</h2></th>
+				<th><h2>Edit/ Delete</h2></th>
+		</tr>
+			</thead>
 <tbody>
-{{#products}}
-<tr>
-<td>{{product_name}}</td>
-<td>{{category_name}}</td>
-<td>{{category_id}}</td>
-<td>{{product_id}}</td>
-</tr>
-{{/products}}
+	{{#products}}
+	<tr>
+		<td>
+			<h2>{{product_name}}</h2>
+		</td>
+
+		<td>
+			<a href="/products/edit/{{product_id}}">Edit</a>
+			<a href="/products/delete/{{product_id}}">Delete</a>
+		</td>
+
+	</tr>
+	{{/products}}
+
 </tbody>
-</table>}
-	
+{{body}}
+
+	</table>
+	</div>

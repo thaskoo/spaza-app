@@ -5,8 +5,9 @@
 <select name ="product_id">
 
 	{{#products}}
-	<option value = "{{id}}">{{product_name}}</option> 
+	<option value = "{{product_id}}">{{product_name}}</option> 
 	{{/products}}
+	
 	</select>
 
 	sales_date: <input type="date" name="sales_date" value="{{sales_date}}">

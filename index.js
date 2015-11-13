@@ -28,7 +28,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
+//parse application/json
 app.use(bodyParser.json())
 
 function errorHandler(err, req, res, next) {
@@ -47,18 +47,20 @@ app.post('/products/add', products.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
 
-app.use(errorHandler);
+//app.use(errorHandler);
 
 //setup the handlers
+//app.get('/', sales.show);
 app.get('/sales', sales.show);
-app.get('/addSales', sales.show);
 app.get('/sales/editSales/:id', sales.get);
+app.post('/sales/update/:id', sales.update);
+app.get('/sales/add', sales.addSales);
 app.post('/sales/add', sales.add);
-app.get('/sales/update/:id', sales.update);
+
 app.get('/sales/delete/:id', sales.delete);
 
 
-app.use(errorHandler);
+//app.use(errorHandler);
 
 
 //configure the port number using and environment number
