@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `categories`;
 create table categories(
    category_id int not null auto_increment,
         category_name VARCHAR(50),
-	  primary key(category_id)
+	  primary key(category_id),
 	constraint uc_category_name unique (category_name)
 );
 
@@ -46,4 +46,4 @@ DROP TABLE IF EXISTS `purchases`;
 	 primary key(id),
 	 foreign key(product_id) REFERENCES products(product_id),
 	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
-);
+);	

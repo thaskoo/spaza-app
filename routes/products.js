@@ -1,4 +1,3 @@
-
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
@@ -6,12 +5,13 @@ exports.show = function (req, res, next) {
         	     if (err) return next(err);
     		      res.render( 'home', {
 		        no_products : results.length === 0,
-		           products : results,
+		           products : results
     	});
     	});
      });
    
 };
+
 exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
 		 connection.query('SELECT * from categories', [], function(err, categories) {
@@ -19,6 +19,7 @@ exports.showAdd = function(req, res){
    });
  });
 };
+
 
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -35,7 +36,6 @@ exports.add = function (req, res, next) {
 		});
 	});
 };
-
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){
@@ -45,8 +45,7 @@ exports.get = function(req, res, next){
 			});
 		});
 	};
-
-exports.update = function(req, res, next){
+	exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
            var id = req.params.id;

@@ -7,4 +7,3 @@ INSERT INTO categories (category_name) VALUES('Toiletries');
 INSERT INTO categories (category_name) VALUES('Fruits');
 INSERT INTO categories (category_name) VALUES('confectionery');
 INSERT INTO categories (category_name) VALUES('Gifts');
-

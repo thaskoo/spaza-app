@@ -1,7 +1,6 @@
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
-
 		connection.query('SELECT sale_id, product_name, sales_date, sales_price, qty, product_name from sales INNER JOIN products ON products.product_id = sales.product_id', [], function(err, results) {
 			if (err) return next(err);
 			connection.query('select * from products', function(err, products){
@@ -28,7 +27,6 @@ exports.addSales = function(req, res, next){
  });
 	console.log(results);
 };
-
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
@@ -46,7 +44,6 @@ exports.add = function (req, res, next) {
 		});
 	});
 };
-
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	 req.getConnection(function(err, connection){
@@ -63,7 +60,6 @@ exports.get = function(req, res, next){
   		});
 	});		
 };
-
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
@@ -85,7 +81,6 @@ exports.update = function(req, res, next){
 
     });
 };
-
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){

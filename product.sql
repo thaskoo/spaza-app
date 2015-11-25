@@ -16,5 +16,3 @@ INSERT INTO products (product_name,category_id) VALUES('Bananas - loose',7);
 INSERT INTO products (product_name,category_id) VALUES('Heart Chocolates',8);
 INSERT INTO products (product_name,category_id) VALUES('Mixed Sweets 5s',8);
 INSERT INTO products (product_name,category_id) VALUES('Apples - loose',7);
-
-

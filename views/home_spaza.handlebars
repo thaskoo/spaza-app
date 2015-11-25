@@ -2,8 +2,8 @@
 <a href="/products/add">Add product</a>
 {{#products}}
   <h2>{{product_name}}</h2>
-  <a href="/products/edit/{{id}}">Edit</a>
-  <a href="/products/delete/{{id}}">Delete</a>
+  <a href="/products/edit/{{product_id}}">Edit</a>
+  <a href="/products/delete/{{product_id}}">Delete</a>
 {{/products}}
 
 {{#no_products}}

@@ -1,4 +1,0 @@
-SELECT sales_csv(stock_item) , SUM(sales_price)
-FROM sales_csv
-GROUP BY sales_price ASC
-LIMIT 1;

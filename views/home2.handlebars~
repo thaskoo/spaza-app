@@ -1,7 +1,0 @@
-{{body}}
-<body>
- 	   <li><a href="product">products</a></li>
-            <li><a href="/product/soldItem">SoldItems</a></li>
-            <li><a href="/product/mostPopularItems">Most</a></li>
-            <li><a href="/product/leastPopularProduct">Least</a></li>
-<body>

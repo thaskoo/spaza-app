@@ -17,7 +17,6 @@ var dbOptions = {
       port: 3306,
       database: 'spaza_app'
 };
-
 //setup template handlebars as the template engine
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -58,15 +57,23 @@ app.get('/sales/add', sales.addSales);
 app.post('/sales/add', sales.add);
 
 app.get('/sales/delete/:id', sales.delete);
-
-
 //app.use(errorHandler);
 
 
 //configure the port number using and environment number
-var portNumber = process.env.CRUD_PORT_NR || 3000;
+//var portNumber = process.env.CRUD_PORT_NR || 3000;
 
 //start everything up
-app.listen(portNumber, function () {
-    console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
-});
+//app.listen(portNumber, function () {
+// console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
+//});
+//app.listen(3000);
+ var port = process.env.PORT || 3000;
+ var server = app.listen(port, function () {
+
+     var host = server.address().address;
+     var port = server.address().port;
+
+     console.log('Example app listening at http://%s:%s', host, port);
+
+   });
