@@ -13,7 +13,7 @@ create table products(
 	 category_name VARCHAR(50),
 	  category_id int,
 	   primary key(product_id),
-	     foreign key(category_id) REFERENCES categories(category_id)
+	     foreign key(category_id) REFERENCES categories(category_id),
 	constraint uc_product_name unique (product_name)
 );
 
@@ -32,15 +32,15 @@ create table sales (
 	    qty int,
 	      product_id int,
 	       primary key(sale_id),
-	        foreign key(product_id) REFERENCES products(product_id)
+	        foreign key(product_id) REFERENCES products(product_id),
 	        (`spaza_app`.`sales`, CONSTRAINT `sales_ibfk_1`)
 );
 DROP TABLE IF EXISTS `purchases`;
-create table purchases (
+ create table purchases (
   id int NOT NULL AUTO_INCREMENT,
 	qty int,
 	cost_price int,
-	stock_date NOT NULL,
+	stock_date date NOT NULL,
 	product_id int,
 	supplier_id int,
 	 primary key(id),
