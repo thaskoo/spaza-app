@@ -68,4 +68,11 @@ app.get('/', function (req, res) {
 
      console.log('Example app listening at http://%s:%s', host, port);
 
-   });
+   //});
+//configure the port number using and environment number
+//var portNumber = process.env.CRUD_PORT_NR || 3000;
+
+//start everything up
+//app.listen(portNumber, function () {
+//console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
+});

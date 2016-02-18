@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS `categories`;
 create table categories(
    category_id int not null auto_increment,
@@ -21,20 +22,22 @@ DROP TABLE IF EXISTS `suppliers`;
 create table suppliers(
    supplier_id int not null auto_increment,
         supplier_name VARCHAR(50)not null,
-	  primary key(supplier_id)
+	  primary key(supplier_id),
+	  constraint uc_product_name unique (supplier_name)
 );
 
 DROP TABLE IF EXISTS `sales`;
 create table sales (
    sale_id int not null auto_increment,
 	sales_date date not null,
-          sales_price int,
+     sales_price int,
 	    qty int,
 	      product_id int,
 	       primary key(sale_id),
-	        foreign key(product_id) REFERENCES products(product_id),
-	        (`spaza_app`.`sales`, CONSTRAINT `sales_ibfk_1`)
+	        foreign key(product_id) REFERENCES products(product_id)
+	        /*(`spaza_app`.`sales`, CONSTRAINT `sales_ibfk_1`)*/
 );
+
 DROP TABLE IF EXISTS `purchases`;
  create table purchases (
   id int NOT NULL AUTO_INCREMENT,
@@ -46,4 +49,4 @@ DROP TABLE IF EXISTS `purchases`;
 	 primary key(id),
 	 foreign key(product_id) REFERENCES products(product_id),
 	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
-);	
+	 );

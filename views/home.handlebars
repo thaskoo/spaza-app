@@ -1,7 +1,10 @@
 {{home}}
 <h1>Products</h1>
 <a href="/products/add">Add Products</a>
-<div class ="container" >
+
+
+<div class ="container">
+
 	<table class ="col-xs-12">
 		<tr>
 			<thead>
@@ -10,15 +13,18 @@
 		</tr>
 			</thead>
 <tbody>
+
 	{{#products}}
+
 	<tr>
 		<td>
 			<h2>{{product_name}}</h2>
+
 		</td>
 
 		<td>
-			<a href="/products/edit/{{product_id}}">Edit</a>
-			<a href="/products/delete/{{product_id}}">Delete</a>
+			<a href="/products/edit/{{id}}">Edit</a>
+			<a href="/products/delete/{{id}}">Delete</a>
 		</td>
 
 	</tr>
