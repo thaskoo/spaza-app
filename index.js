@@ -31,8 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json());
 
-var products = require('./routes/products');
- //sales = require ('./routes/sales');
+var products = require('./routes/products'),
+ sales = require ('./routes/sales');
 
 function errorHandler(err, req, res, next) {
   res.status(500);
@@ -56,14 +56,13 @@ app.post('/products/add', products.add);
 app.get('/products/delete/:id', products.delete);
 
 //app.get('/', sales.show);
-/*app.get('/sales', sales.show);
-app.get('/sales/editSales/:id', sales.get);
+app.get('/sales', sales.show);
+app.get('/sales/addSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
-app.get('/sales/add', sales.showAdd);
+//app.get('/sales/add', sales.showAdd);
 app.post('/sales/add', sales.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/sales/delete/:id', sales.delete);
-*/
 
 //configure the port number using and environment number
 var portNumber = process.env.CRUD_PORT_NR || 3001;
