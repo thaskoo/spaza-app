@@ -5,7 +5,7 @@ var express = require('express'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser');
-    //products = require('./routes/products');
+    
 
 var app = express();
 
@@ -32,16 +32,22 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 var products = require('./routes/products');
- // sales = require('./routes/sales');
+ //sales = require ('./routes/sales');
 
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
 };
 
+app.get ('/', function(req, res){
+  res.render('home_spaza');
+});
+
+
+
 //setup the handlers
-app.get('/', products.show);
 app.get('/products', products.show);
+//app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
 app.get('/products/add', products.showAdd);
@@ -49,7 +55,15 @@ app.post('/products/add', products.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
 
-app.use(errorHandler);
+//app.get('/', sales.show);
+/*app.get('/sales', sales.show);
+app.get('/sales/editSales/:id', sales.get);
+app.post('/sales/update/:id', sales.update);
+app.get('/sales/add', sales.showAdd);
+app.post('/sales/add', sales.add);
+//this should be a post but this is only an illustration of CRUD - not on good practices
+app.get('/sales/delete/:id', sales.delete);
+*/
 
 //configure the port number using and environment number
 var portNumber = process.env.CRUD_PORT_NR || 3001;
@@ -58,4 +72,3 @@ var portNumber = process.env.CRUD_PORT_NR || 3001;
 app.listen(portNumber, function () {
     console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
 });
-

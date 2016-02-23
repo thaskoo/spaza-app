@@ -35,7 +35,6 @@ create table sales (
 	      product_id int,
 	       primary key(sale_id),
 	        foreign key(product_id) REFERENCES products(product_id)
-	        /*(`spaza_app`.`sales`, CONSTRAINT `sales_ibfk_1`)*/
 );
 
 DROP TABLE IF EXISTS `purchases`;
