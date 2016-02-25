@@ -12,7 +12,7 @@ body {
   text-align: center;
   padding: 0;
   margin: 0;
-  opacity: 0.9;
+  opacity: 0.4;
 }
 
 .nav li {
@@ -57,7 +57,7 @@ body {
   .nav li {
     width: 130px;
     border-bottom: none;
-    height: 50px;
+    height: 30px;
     line-height: 50px;
     font-size: 1.4em;
     display: inline-block;
@@ -73,13 +73,13 @@ body {
   }
 
   .nav > ul > li > a {
-    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Sub Menus */
   .nav li ul {
     position: absolute;
-    display: none;
+    display: inline;
     width: inherit;
   }
 
@@ -88,7 +88,7 @@ body {
   }
 
   .nav li ul li {
-    display: block;
+    display: inline;
   }
 }
 table, th, td {

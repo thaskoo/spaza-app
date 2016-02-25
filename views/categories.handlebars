@@ -1,0 +1,32 @@
+<h1>Category List</h1>
+<a href="/categories/add">Add category</a>
+
+{{#no_products}}
+<p>No</p>
+{{/no_products}}
+
+
+<div class="container">
+<table class="col-xs-12">
+	<table>
+	<thead>
+	<tr>
+	<th>Category</th>
+	<th>Edit/Delete</th>
+
+	</tr>
+	</thead>
+	<tbody>
+	{{#categories}}
+	<tr>
+	<td>{{category_name}}</td>
+
+	   <td> 
+	       <a href="/categories/edit/{{category_id}}">Edit</a>
+           <a href="/categories/delete/{{category_id}}">Delete</a>
+     </td>
+		  </tr>
+		  {{/categories}}
+		  </tbody>
+</table>
+</div>
