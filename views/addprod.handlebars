@@ -1,0 +1,20 @@
+<h1>Add</h1>
+<form action="/products/add" method="POST">
+	product_name: <input type="text" name="product_name" value="{{product_name}}">
+
+
+   <!--<select name ="product_id">-->
+	   <!--<option value = "{{product_id}}">{{product_name}}-->
+	<!--</select>-->
+	<input type="submit">
+</form>
+<tbody>
+{{#products}}
+		<td> 
+	<a href="/products/edit/{{id}}">Edit</a>
+     <a href="/products/delete/{{id}}">Delete</a>
+</td>
+{{/products}}
+
+</tbody>
+

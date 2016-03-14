@@ -1,4 +1,20 @@
-<h3>Popular</h3>
-{{#each product}}
-<h2>{{@key}} -{{this}}</h2>
-{{/each}}
+<h1>mostPopularItem<h1>
+<div class="container">
+<table class="col-xs-12">
+<thead>
+
+	<th>product Name</th>
+	<th>Quantity</th>
+
+</thead>
+
+{{#mostPopularItem}}
+<tr>
+
+	<td>{{product_name}}</td>
+	<td>{{qty}}</td>
+
+</tr>
+{{/mostPopularItem}}
+</table>
+</div>

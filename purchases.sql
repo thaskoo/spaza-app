@@ -1,5 +1,4 @@
-INSERT INTO purchases (qty, cost_price, stock_date, product_id, supplier_id)
-SELECT stock_purchases_csv.quantity, stock_purchases_csv.date, stock_purchases_csv.cost, products.product_id, suppliers.supplier_id
-FROM stock_purchases_csv
-INNER JOIN products ON products.product_name = stock_purchases_csv.item
-INNER JOIN suppliers ON suppliers.supplier_name = stock_purchases_csv.shop;
+SELECT products.product_name, purchases.qty, purchases.stock_date, purchases.cost_price, suppliers.supplier_name
+FROM purchases
+INNER JOIN products ON products.product_id = purchases.product_id
+INNER JOIN suppliers ON suppliers.supplier_id = purchases.supplier_id

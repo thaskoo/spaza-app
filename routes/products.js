@@ -14,8 +14,10 @@ exports.show = function (req, res, next) {
 
 exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
-		 connection.query('SELECT * from categories', [], function(err, categories) {
-		    res.render('add', {categories:categories});
+		 connection.query('SELECT * from categories', [], function(err, rows) {
+		    res.render('addprod', {
+		    	categories:rows
+		    });
    });
  });
 };
@@ -50,7 +52,7 @@ exports.get = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
            var id = req.params.id;
               req.getConnection(function(err, connection){
-		 connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
+		 connection.query('UPDATE products SET ? WHERE product_id = ?', [data, id], function(err, rows){
     		   if (err) next(err);
             res.redirect('/products');
     		});
@@ -66,4 +68,24 @@ exports.delete = function(req, res, next){
 		    res.redirect('/products');
 		});
 	});
+};
+exports.mostPopularProduct =function(req, res, next){
+		req.getConnection(function(err, connection){
+		   connection.query('SELECT products.product_name, SUM( sales.qty ) AS qty FROM sales INNER JOIN products ON sales.product_id = products.product_id GROUP BY products.product_name ORDER BY qty DESC LIMIT 1', [], function(err, rows){
+    		   if (err) next(err);
+    		   res.render('mostPopularItem', {
+    		   	mostPopularItem : rows
+    		   });
+    		});
+		});
+};
+exports.leastpopularProd =function(req, res, next){
+		req.getConnection(function(err, connection){
+		   connection.query('SELECT products.product_name, SUM( sales.qty ) AS qty FROM sales INNER JOIN products ON sales.product_id = products.product_id GROUP BY products.product_name ORDER BY qty ASC LIMIT 1', [], function(err, rows){
+    		   if (err) next(err);
+    		   res.render('leastPopularProduct', {
+    		   	leastPopularProduct: rows
+    		   });
+    		});
+		});
 };

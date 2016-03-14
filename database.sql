@@ -15,13 +15,13 @@ create table products(
 	  category_id int,
 	   primary key(product_id),
 	     foreign key(category_id) REFERENCES categories(category_id),
-	constraint uc_product_name unique (product_name)
+	     constraint uc_product_name unique (product_name)
 );
 
 DROP TABLE IF EXISTS `suppliers`;
 create table suppliers(
    supplier_id int not null auto_increment,
-        supplier_name VARCHAR(50)not null,
+        supplier_name VARCHAR(50),
 	  primary key(supplier_id),
 	  constraint uc_product_name unique (supplier_name)
 );
@@ -42,10 +42,20 @@ DROP TABLE IF EXISTS `purchases`;
   id int NOT NULL AUTO_INCREMENT,
 	qty int,
 	cost_price int,
-	stock_date date NOT NULL,
+	stock_date date not null,
 	product_id int,
 	supplier_id int,
 	 primary key(id),
 	 foreign key(product_id) REFERENCES products(product_id),
 	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
 	 );
+
+DROP TABLE IF EXISTS `login`;
+create table login(
+   id int not null auto_increment,
+        user_name VARCHAR(50),
+         email VARCHAR(60),
+         password int
+	     primary key(id),
+	  /*constraint uc_product_name unique (user_name)*/
+);

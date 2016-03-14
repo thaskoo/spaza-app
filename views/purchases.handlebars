@@ -4,18 +4,24 @@
 <select name ="product_id">
 
 	{{#products}}
-	<option value = "{{id}}">{{product_name}}</option>
+	<option value = "{{product_name}}">{{product_name}}</option>
 	{{/products}}
 	</select>
-	<!--product_name: <input type="text" name="product_name" value="{{product_name}}">-->
 
-	qty: <input type="number" name="qty" value="{{qty}}">
-	cost_price: <input type="price" name="cost_price" value="R{{cost_price}}">
-
+     qty: <input type="number" name="qty" value="{{qty}}">
+     cost_price: <input type="price" name="cost_price" value="{{cost_price}}">
 	stock_date: <input type="date" name="stock_date" value="{{stock_date}}">
+	
 
-	supplier_name: <input type="text" name="supplier_name" value="{{supplier_name}}">
+	<select name ="supplier_id">
+
+	{{#suppliers}}
+	<option value = "{{supplier_name}}">{{supplier_name}}</option>
+	{{/suppliers}}
+	</select>
+
 	<input type="submit">
+
 </form>
 
 <h1>Purchases Records</h1>
@@ -23,15 +29,16 @@
 <table class="col-xs-12">
 
 	<tr><thead>
-	<th>product_name</th>
-	<th>qty</th>
-	<th>cost_price</th>
-	<th>stock_date</th>
-	<th>supplier name</th>
+	<th>Product Name</th>
+	<th>Quantity</th>
+	<th>cost-price</th>
+	<th>stock-date</th>
+	<th>supplier-name</th>
+	<th>edit/delete</th>
 
 </tr></thead>
 <tbody>
- {{#suppliers}}
+ {{#purchases}}
 <tr>
 <td>{{product_name}}</td>
 <td>{{qty}}</td>
@@ -39,12 +46,13 @@
 <td>{{stock_date}}</td>
 <td>{{supplier_name}}</td>
 
+
 <td> 
-	<a href="/purchases/edit/{{id}}">Edit</a>
-     <a href="/purchases/delete/{{id}}">Delete</a>
+	<a href="/puchases/edit/{{id}}">Edit</a>
+     <a href="/purchase/delete/{{id}}">Delete</a>
 </td>
 </tr>
-{{/suppliers}}
+{{/purchases}}
 </tbody>
 </table>
-</div>
+</div

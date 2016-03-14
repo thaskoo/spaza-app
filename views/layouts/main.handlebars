@@ -1,57 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
     <title>Nelisa's spazza</title>
-    <!--<link rel="stylesheet" type="text/css" href="css.css">-->
+     <h1>Nelisa Cash Store</h1>
 
+    <script type="text/javascript" src="/js/jquery-2.2.1.js"></script>
+     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+     </head>
+ 
+   <body>
+<ul class="nav nav-pills">
+   <li class="nav nav-pills"><a href="/">Home</a></li>
+       <li><a href = "#" class="dropdown-toggle" data-toggle ="dropdown">Products
+         <span class="caret"></span>
+            </a>
+              <ul class="dropdown-menu">
+                <li><a href ="/products">Product List</a></li>
+                <li><a href ="/products/mostPopularItem">Most Popular Product</a></li>
+                <li><a href ="/products/leastPopularProduct">Least Popular Product</li>
+      </ul>
+      <li><a href="/sales">Sales</a></li>
+      <li><a href = "#" class="dropdown-toggle" data-toggle ="dropdown">Categories
+         <span class="caret"></span>
+            </a>
+              <ul class="dropdown-menu">
+                <li><a href ="/categories">Category List</a></li>
+                <li><a href ="/categories/mostCategory">Most Popular Category</a></li>
+                <li><a href ="/categories/leastPopularCategory">Least Category</li>
+                <li><a href ="/categories/CategoryEarnings">Earnings Per Category</a></li>
+      </ul>
+      <li><a href="/purchases">Purchases</a></li>
+</ul>
 
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<link href="/css/main.css" rel="stylesheet">
-<!-- Latest compiled and minified JavaScript -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<div class="nav-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-        </div>
-
-  <h1>NELISA SPAZA-APP</h1>
-
-  <body>
-
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"></a>
-        </div>
-        <li class="nav navbar-nav">
-          <li class="home"><a href="/">Home</a></li>
-
-           <ul class="products"><a href="/products">Products</a>
-             <li><a href="/leastPopularProduct">leastPopularProduct</a></li>
-             <li><a href="/mostPopularItem">mostPopularItem</a></li>
-           </ul>
-            <li class="sales"><a href="/sales">Sales</a></li> 
-             <li class="purchases"><a href="/purchases">Purchases</a></li>
-              <ul class="categories"><a href="/categories">Categories</a>
-                 <li><a href="../leastPopularCategory">leastPopularCategory</a></li>
-                 <li><a href="../mostCategoryProduct">mostCategoryProduct</a></li>
-              </ul> 
-        </li>
-      </div>
-    </nav>
   </body>
 
-<div class ="container">
   {{{body}}}
-</div>
+
 </html>

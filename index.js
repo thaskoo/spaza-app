@@ -36,7 +36,10 @@ var products = require('./routes/products'),
     //mostPopularItems = require("./mostPopularItem"),
     categories = require("./routes/categories"),
     //leastPopularCategory = require("./leastPopularCategory"),
+    login = require ('./routes/login'),
     purchases = require ('./routes/purchases');
+   
+
 
 function errorHandler(err, req, res, next) {
   res.status(500);
@@ -49,12 +52,16 @@ app.get ('/', function(req, res){
 app.get ('/', function(req, res){
   res.render('homeSales');
 });
+app.get ('/', function(req, res){
+  res.render('home');
+});
+
 //setup the handlers
 app.get('/products', products.show);
 //app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
-app.get('/products/add', products.showAdd);
+app.get('/products/addprod', products.showAdd);
 app.post('/products/add', products.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
@@ -77,6 +84,8 @@ app.get('/purchases/edit/:id', purchases.get);
 app.post('/purchases/update/:id', purchases.update);
 app.get('/purchases/add', purchases.showAdd);
 app.post('/purchases/add', purchases.add);
+app.get('/products/mostPopularItem', products.mostPopularProduct);
+app.get('/products/leastPopularProduct', products.leastpopularProd);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/purchases/delete/:id', purchases.delete);
 
@@ -86,10 +95,22 @@ app.get('/categories', categories.show);
 //app.get('/products', products.show);
 app.get('/categories/edit/:id', categories.get);
 app.post('/categories/update/:id', categories.update);
-app.get('/categories/addCategories', categories.showAdd);
-app.post('/categories/addCategories', categories.add);
+app.get('/categories/add', categories.showAdd);
+app.post('/categories/add', categories.add);
+app.get('/categories/mostCategory', categories.mostPopularCat);
+app.get('/categories/leastPopularCategory', categories.leastPopularCat);
+app.get('/categories/CategoryEarnings', categories.EarningperCat);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete);
+
+app.get('/', login.show);
+app.get('/login/edit/:id', login.get);
+app.post('/login/update/:id', login.update);
+app.get('/login/add', login.showAdd);
+app.post('/login/add', login.add);
+//this should be a post but this is only an illustration of CRUD - not on good practices
+//app.get('/login/delete/:id', login.delete);
+
 
 //configure the port number using and environment number
 var portNumber = process.env.CRUD_PORT_NR || 3001;

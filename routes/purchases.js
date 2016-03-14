@@ -1,15 +1,15 @@
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
-		   connection.query('SELECT stock_purchases_csv.quantity, stock_purchases_csv.date, stock_purchases_csv.cost, products.product_id, suppliers.supplier_id FROM stock_purchases_csv INNER JOIN products ON products.product_name = stock_purchases_csv.item INNER JOIN suppliers ON suppliers.supplier_name = stock_purchases_csv.shop', [], function(err, results) {
+		   connection.query('SELECT products.product_name, purchases.qty, purchases.stock_date, purchases.cost_price, suppliers.supplier_name FROM purchases INNER JOIN products ON products.product_id = purchases.product_id INNER JOIN suppliers ON suppliers.supplier_id = purchases.supplier_id', [], function(err, results) {
 	         	if (err) return next(err);
-	         connection.query('SELECT * from products', [], function(err, results) {
-	         	 connection.query('SELECT * from suppliers', [], function(err, results) {
+	         connection.query('SELECT * from products', [], function(err, products) {
+	         	 connection.query('SELECT * from suppliers', [], function(err, suppliers) {
 	         	 	if (err) return next(err);
 		      	    res.render('purchases', {
 		      	    	purchases:results,
-		      	    	products:results,
-	          		    suppliers : results
+		      	    	products:products,
+	          		    suppliers : suppliers
     	});
     	});
      });
@@ -19,38 +19,38 @@ exports.show = function (req, res, next) {
 
 exports.showAdd= function(req, res){
 	req.getConnection(function(err, connection){
-		 connection.query('SELECT * from purchases', [], function(err, results) {
-		    res.render('add', {
-
-		    	purchases:results
+		 connection.query('SELECT * from suppliers', [], function(err, results) {
+		    res.render('purchases', {
+		    	suppliers:results
 		    });
    });
  });
 };
-
-
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
 		var input = JSON.parse(JSON.stringify(req.body));
 
 		var data = {
-      		//product_name : input.product_name,
-      		//sales_date: input.sales_date.
-		    category_id : input.category_id
+      		product_name : input.product_name,
+		   qty : input.qty,
+		   stock_date : input.stock_date,
+		   cost_price : input.cost_price,
+		   supplier_name : input.supplier_name
   	};
-		connection.query('insert into purchases set ?', data, function(err, results) {
+		connection.query('insert into products set ?', data, function(err, results) {
   		if (err) return next(err);
 			res.redirect('/purchases');
 		});
 	});
 };
+
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){
 		connection.query('SELECT  * FROM purchases WHERE purchases_id = ?', [id], function(err,rows){
 			if (err) return next(err);
-				res.render('editPurchases',{page_title:"Edit Customers - Node.js", data : rows[0]});
+				res.render('edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
 			});
 		});
 	};
