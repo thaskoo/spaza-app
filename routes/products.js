@@ -89,3 +89,14 @@ exports.leastpopularProd =function(req, res, next){
     		});
 		});
 };
+exports.EarningperProd = function(req, res, next){
+	req.getConnection(function(err, connection){
+	connection.query('SELECT products.product_name, SUM(sales.qty * sales.sales_price)AS Earnings FROM sales INNER JOIN products ON sales.product_id = products.product_id INNER JOIN categories ON categories.category_id = products.category_id GROUP BY products.product_name ORDER BY Earnings DESC', [], function(err, rows){
+    		   if (err) 
+    		   	return next(err);
+    		   res.render('ProductEarnings', {
+    		   	 ProductEarnings: rows
+    		   });
+    		});
+		});
+		};

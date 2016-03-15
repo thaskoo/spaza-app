@@ -86,6 +86,7 @@ app.get('/purchases/add', purchases.showAdd);
 app.post('/purchases/add', purchases.add);
 app.get('/products/mostPopularItem', products.mostPopularProduct);
 app.get('/products/leastPopularProduct', products.leastpopularProd);
+app.get('/products/ProductEarnings', products.EarningperProd);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/purchases/delete/:id', purchases.delete);
 
@@ -100,6 +101,7 @@ app.post('/categories/add', categories.add);
 app.get('/categories/mostCategory', categories.mostPopularCat);
 app.get('/categories/leastPopularCategory', categories.leastPopularCat);
 app.get('/categories/CategoryEarnings', categories.EarningperCat);
+app.get('/categories/CategoryProfit', categories.ProfitperCat);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete);
 
