@@ -55,7 +55,6 @@ create table login(
    id int not null auto_increment,
         user_name VARCHAR(50),
          email VARCHAR(60),
-         password int
-	     primary key(id),
-	  /*constraint uc_product_name unique (user_name)*/
+         password int,
+	     primary key(id)
 );

@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express'),
+    session = require('express-session'),
     exphbs  = require('express-handlebars'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
@@ -37,7 +38,7 @@ var products = require('./routes/products'),
     categories = require("./routes/categories"),
     //leastPopularCategory = require("./leastPopularCategory"),
     login = require ('./routes/login'),
-    purchases = require ('./routes/purchases');
+    purchases = require ('./routes/purchases')
    
 
 
@@ -104,15 +105,6 @@ app.get('/categories/CategoryEarnings', categories.EarningperCat);
 app.get('/categories/CategoryProfit', categories.ProfitperCat);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete);
-
-app.get('/', login.show);
-app.get('/login/edit/:id', login.get);
-app.post('/login/update/:id', login.update);
-app.get('/login/add', login.showAdd);
-app.post('/login/add', login.add);
-//this should be a post but this is only an illustration of CRUD - not on good practices
-//app.get('/login/delete/:id', login.delete);
-
 
 //configure the port number using and environment number
 var portNumber = process.env.CRUD_PORT_NR || 3001;
