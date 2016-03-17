@@ -1,25 +1,18 @@
-exports.login = function (req, res, next) {
-	req.getConnection(function(err, connection){
-		if (err) return next(err);
-		var input = JSON.parse(JSON.stringify(req.body));
+exports.login = function(req, res, next){
+	var user_name = req.body.user_name;
+  var  password = req.body.password;
 
-		var data = {
-      		user_name : input.user_name,
-		    email : input.email,
-		    password : input.password
-  	};
-		connection.query('insert into login set ?', data, function(err, results) {
-  		if (err) return next(err);
-			res.redirect('/login');
+
+req.getConnection(function(err, connection){
+		connection.query('SELECT * FROM users WHERE username = ?',user_name, function(err,users){
+      if(password === users[0].password) { // checking if users is on the database
+        res.redirect("/home");
+      }
+			 
+      else {
+        res.redirect("/");
+				
+        }
 		});
 	});
 };
-
-var checkUser = function(req, res, next){
-  if (req.session.user){
-    return next();
-  }
-  // the user is not logged in redirect him to the login page
-  res.redirect('login');
-};
-

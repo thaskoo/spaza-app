@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express'),
-    session = require('express-session'),
     exphbs  = require('express-handlebars'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
@@ -33,12 +32,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 var products = require('./routes/products'),
-    sales = require ('./routes/sales'),
-    //mostPopularItems = require("./mostPopularItem"),
-    categories = require("./routes/categories"),
-    //leastPopularCategory = require("./leastPopularCategory"),
-    login = require ('./routes/login'),
-    purchases = require ('./routes/purchases')
+     sales = require ('./routes/sales'),
+     categories = require("./routes/categories"),
+     login = require('./routes/login'),
+     //signup = require('./routes/signUp'),
+     session = require('express-session'),
+     purchases = require ('./routes/purchases')
    
 
 
@@ -54,7 +53,13 @@ app.get ('/', function(req, res){
   res.render('homeSales');
 });
 app.get ('/', function(req, res){
-  res.render('home');
+  res.render('home2');
+});
+app.get('/',function(req, res){
+ res.render('home_spaza')
+  res.render('signUp',{
+    layout:false,
+  });
 });
 
 //setup the handlers
@@ -77,7 +82,17 @@ app.post('/sales/add', sales.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/sales/delete/:id', sales.delete);
 
+//signup routes
+//app.get('/signUp', signUp.signUp);
 
+ //login routes
+ app.post('/login');
+ app.get('/login', login.login);
+
+ //home routes
+ app.get('/home', function(req, res){
+   res.render('home');
+});
 //setup the handlers
 app.get('/purchases', purchases.show);
 //app.get('/products', products.show);

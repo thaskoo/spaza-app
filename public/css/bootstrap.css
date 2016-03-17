@@ -12,6 +12,7 @@ html {
 th {
       font-size: medium;
 }
+
 article,
 aside,
 details,
@@ -1218,7 +1219,9 @@ h6 .small,
   line-height: 1;
   color: #777;
 }
-h1,
+h1{
+  font-size: 56px;
+}
 .h1,
 h2,
 .h2,
