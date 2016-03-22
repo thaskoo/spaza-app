@@ -1,5 +1,19 @@
-<form action="/login/add" method="POST">
-  user_name: <input type="text" name="user_name" value="user_name}}">
-  email: <input type="text" name="email" value="email}}">
-  password: <input type="number" name="password" value="password}}">
-</form>
+ <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+ <h1>login</h1>
+ {{#if msg}}
+ <div class="message">
+     {{msg}}
+ </div>
+ {{/if}}
+ <div id="login-area">
+ <form class="" action="/login" method="post">
+     <input type="text" name="username" value="{{user_name}}" placeholder="username"></br>
+
+     <!--<input type="password" name="Password" value="{{password}}" placeholder="Password">-->
+
+     <input type="submit" name="name" value="login">
+     <!--<input type="submit" value="logout">-->
+ </form>
+  </fieldset>
+</div>

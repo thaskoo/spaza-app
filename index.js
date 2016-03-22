@@ -5,6 +5,8 @@ var express = require('express'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser');
+    var session = require('express-session');
+
     
 
 var app = express();
@@ -21,6 +23,18 @@ var dbOptions = {
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+
+/*app.use(function(req, res, next) {
+  console.log("In the middleware");
+  next();
+});*/
+
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+
+app.post('/', function(req, res) {
+
+});
 app.use(express.static(__dirname + '/public'));
 
 //setup middleware
@@ -36,31 +50,47 @@ var products = require('./routes/products'),
      categories = require("./routes/categories"),
      login = require('./routes/login'),
      //signup = require('./routes/signUp'),
-     session = require('express-session'),
-     purchases = require ('./routes/purchases')
-   
-
+     purchases = require ('./routes/purchases');
 
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
 };
 
-app.get ('/', function(req, res){
+app.get ("/", function(req, res){
   res.render('home_spaza');
 });
-app.get ('/', function(req, res){
+app.get ("/", function(req, res){
   res.render('homeSales');
 });
-app.get ('/', function(req, res){
-  res.render('home2');
+app.get ("/", function(req, res){
+  res.render("/home");
 });
-app.get('/',function(req, res){
- res.render('home_spaza')
-  res.render('signUp',{
-    layout:false,
-  });
+
+app.post("/login", function(req, res){
+  req.session.user = "Lili";
+  res.redirect("/home");
 });
+
+var checkUser = function(req, res, next){
+  console.log("checkUser...");
+   if(req.session.user){ //checking the user
+      return next();
+    }
+    res.redirect("/login");
+};
+app.get("/home", checkUser, function(req, res){
+    res.render("home",{user : req.session.user});//information to my handlebars
+});
+
+app.get("/login", function(req, res){
+    res.render("login", {});
+});
+
+ app.get("/logout", function(req, res){
+  delete req.session.user; //deleting the user for the session
+  res.redirect("/login");  //redirecting to login
+ });
 
 //setup the handlers
 app.get('/products', products.show);
@@ -82,17 +112,7 @@ app.post('/sales/add', sales.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/sales/delete/:id', sales.delete);
 
-//signup routes
-//app.get('/signUp', signUp.signUp);
 
- //login routes
- app.post('/login');
- app.get('/login', login.login);
-
- //home routes
- app.get('/home', function(req, res){
-   res.render('home');
-});
 //setup the handlers
 app.get('/purchases', purchases.show);
 //app.get('/products', products.show);

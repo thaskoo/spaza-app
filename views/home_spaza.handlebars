@@ -1,15 +1,34 @@
- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!--  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/login.css">
+ <h1>login</h1>
+ {{#if msg}}
+ <div class="message">
+     {{msg}}
+ </div>
+ {{/if}}
+ <div id="login-area">
+ <form class="" action="/login" method="post">
+     <input type="text" name="username" value="{{user_name}}" placeholder="username"></br>
 
-     <h2>Sign in</h2>
-    <div id="login-area">
-  <form action="/signUp" method="POST">
-   <label>Username:</label>
-  <input type="text" name="username"/><br>
-  <label>Password:</label>
-  <input type="password" name="password"><br>
-   <a href="/home" class="button1">Login</a>
-   <a href="/signUp" class="button2">Sign Up</a>
+     <input type="password" name="Password" value="{{password}}" placeholder="Password">
+
+     <input type="submit" name="name" value="login">
+     <input type="submit" value="logout">
  </form>
   </fieldset>
-</div>
+</div>-->
+<h1>Welcome!</h1>
+
+{{#if user}}
+    Hello, {{user}}
+{{/if}}
+
+<h2>You should only see this page if you are logged in!</h2>
+
+<h3>And this message if you are an admin user</h3>
+
+Welcome admin user!
+
+
+<h3>You should be able to logout of the app</h3>
+<a href="/logout">Logout</a>
