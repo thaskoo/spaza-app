@@ -53,8 +53,7 @@ DROP TABLE IF EXISTS `purchases`;
 DROP TABLE IF EXISTS `signUp`;
 create table signUp (
    id int not null auto_increment,
-        user_name VARCHAR(50),
-        email varchar (100),
+        username VARCHAR(50),
          password int,
 	     primary key(id)
 );
@@ -62,6 +61,6 @@ create table signUp (
 DROP TABLE if exist users;
 CREATE TABLE users (
 	 id int not null auto_increment primary key,
-	 user_name varchar(100),
+	 username varchar(100),
 	 password varchar(100)
 );

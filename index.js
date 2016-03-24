@@ -6,6 +6,7 @@ var express = require('express'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser');
     var session = require('express-session');
+    var bcrypt = require('bcrypt');
 
     
 
@@ -23,13 +24,18 @@ var dbOptions = {
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+// Generate a salt
+var salt = bcrypt.genSaltSync(3);
 
-/*app.use(function(req, res, next) {
-  console.log("In the middleware");
-  next();
-});*/
+// Hash the password with the salt
+var hash = bcrypt.hashSync("Athini", salt);
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+var hash = bcrypt.hashSync("Athini", 3);
+
+bcrypt.compareSync("Athini", hash);
+bcrypt.compareSync("not my password", hash);
+
+app.use(session({ secret: 'keyboard cat',saveUninitialized :false,resave : true, cookie: { maxAge: 60000 }}))
 
 
 app.post('/', function(req, res) {
@@ -49,7 +55,7 @@ var products = require('./routes/products'),
      sales = require ('./routes/sales'),
      categories = require("./routes/categories"),
      login = require('./routes/login'),
-     //signup = require('./routes/signUp'),
+     signup = require('./routes/signUp'),
      purchases = require ('./routes/purchases');
 
 function errorHandler(err, req, res, next) {
@@ -59,17 +65,23 @@ function errorHandler(err, req, res, next) {
 
 app.get ("/", function(req, res){
   res.render('home_spaza');
+   layout: false;
 });
 app.get ("/", function(req, res){
   res.render('homeSales');
 });
 app.get ("/", function(req, res){
   res.render("/home");
+  //layout: false;
 });
 
 app.post("/login", function(req, res){
-  req.session.user = "Lili";
+  req.session.user = "Thaskoo";
   res.redirect("/home");
+});
+app.post("/signUp", function(req, res){
+  req.session.user = "Thaskoo";
+  res.redirect("/signUp");
 });
 
 var checkUser = function(req, res, next){
@@ -86,6 +98,20 @@ app.get("/home", checkUser, function(req, res){
 app.get("/login", function(req, res){
     res.render("login", {});
 });
+app.get("/signup", function(req, res){
+    res.render("signup", {});
+});
+
+
+/*var userRole = {
+    Nelisa : admin,
+    Xolani : admin,
+};
+*/
+/*app.post("/login", function(req, res){
+  req.session.user = req.body.username; //logging in as a user Lhita
+  res.redirect("/home");
+}); */
 
  app.get("/logout", function(req, res){
   delete req.session.user; //deleting the user for the session

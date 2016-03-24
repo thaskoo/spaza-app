@@ -1,18 +1,18 @@
 exports.login = function(req, res, next){
-	var user_name = req.body.user_name;
+  req.getConnection(function(err, connection){
+	var username = req.body.username;
   var  password = req.body.password;
 
 
-req.getConnection(function(err, connection){
-		connection.query('SELECT * FROM users WHERE username = ?',user_name, function(err,users){
+
+		connection.query('SELECT * FROM users ', username, function(err,users){
       if(password === users[0].password) { // checking if users is on the database
         res.redirect("/home");
       }
 			 
       else {
-        res.redirect("/");
-				
-        }
+           res.redirect("/login");
+         };
 		});
 	});
 };

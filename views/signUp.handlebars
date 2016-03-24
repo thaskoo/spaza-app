@@ -1,20 +1,17 @@
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/login.css">
-<!-- 
  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/login.css"> -->
-
-     <h2>Sign in</h2>
-    <div id="login-area">
-  <form action="/signUp" method="POST">
-   <label>Email:</label>
-   <label>Username:</label>
-  <input type="text" name="username"/><br>
-  <label>Password:</label>
-  <input type="password" name="password"><br>
-   <label>Confirm Password:</label>
-  <input type="password" name="password"><br>
-   <a href="/login" class="button1">SignUp</a>
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+ <h1>login</h1>
+ {{#if msg}}
+ <div class="message">
+     {{msg}}
+ </div>
+ {{/if}}
+ <div id="login-area">
+ <form class="" action="/signUp" method="post">
+     <input type="text" name="username" value="{{user_name}}" placeholder="username"></br>
+      <input type="password" name="password" value="{{password}}" placeholder="password"></br>
+     <input type="submit" name="name" value="login">
+     <!--<input type="submit" value="logout">-->
  </form>
   </fieldset>
 </div>
