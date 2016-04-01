@@ -1,18 +1,25 @@
+var bcrypt = require('bcrypt');
 exports.login = function(req, res, next){
-  req.getConnection(function(err, connection){
-	var username = req.body.username;
-  var  password = req.body.password;
+   var input = JSON.parse(JSON.stringify(req.body));
+     var username = req.body.username;
+     var  password = req.body.password;
 
+ req.getConnection(function(err, connection){
 
-
-		connection.query('SELECT * FROM users ', username, function(err,users){
-      if(password === users[0].password) { // checking if users is on the database
-        res.redirect("/home");
+    connection.query('SELECT * FROM users where username = ?', username, function(err,users){
+      var user = users[0];
+      if(user === undefined) { // checking if users is on the database
+        res.redirect("/");
       }
-			 
-      else {
-           res.redirect("/login");
-         };
-		});
-	});
+       
+          bcrypt.compare(password, user.password, function (err, pass) {
+            if(pass) {
+              res.redirect("/home");
+            }
+            else {
+              res.redirect("/");
+            }
+    });
+  });
+});
 };

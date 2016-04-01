@@ -1,2 +1,2 @@
-INSERT INTO users( username ,password) VALUES('Thaskoo',1995);
-INSERT INTO users( username ,password) VALUES('Sisonke',1994);
+INSERT INTO users( username ,password, roles) VALUES('Thaskoo',1995, admin);
+INSERT INTO users( username ,password, roles) VALUES('Sisonke',1994, customer);

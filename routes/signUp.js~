@@ -15,7 +15,7 @@ var bcrypt = require('bcrypt');
       		data.password = hash;
 
 			connection.query('insert into users set ?', data, function(err, data) {
-  			if (err) {
+  			...............................................................................................................................................if (err) {
              res.redirect('/signUp');
   		} 
   		else{

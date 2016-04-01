@@ -50,17 +50,10 @@ DROP TABLE IF EXISTS `purchases`;
 	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
 	 );
 
-DROP TABLE IF EXISTS `signUp`;
-create table signUp (
-   id int not null auto_increment,
-        username VARCHAR(50),
-         password int,
-	     primary key(id)
-);
-
 DROP TABLE if exist users;
 CREATE TABLE users (
 	 id int not null auto_increment primary key,
 	 username varchar(100),
-	 password varchar(100)
+	 password varchar(100),
+	 roles varchar(100)
 );
