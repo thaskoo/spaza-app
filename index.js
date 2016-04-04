@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express'),
+    flash = require('express-flash'),
   // bcrypt = require('bcrypt');
     exphbs  = require('express-handlebars'),
     mysql = require('mysql'),
@@ -9,9 +10,8 @@ var express = require('express'),
     var session = require('express-session');
 
 
-    
-
 var app = express();
+//app.use(flash());
 
 var dbOptions = {
       host: 'localhost',
@@ -40,19 +40,19 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 
 app.use(bodyParser.json());
+ app.use(flash());
 
 var products = require('./routes/products'),
      sales = require ('./routes/sales'),
      categories = require("./routes/categories"),
      login = require('./routes/login'),
      signUp = require('./routes/signUp'),
-     purchases = require ('./routes/purchases')
+     purchases = require('./routes/purchases')
 
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
 };
-
 //setup the handlers
 app.get('/', function(req, res) {
     res.render('login', {
@@ -60,7 +60,7 @@ app.get('/', function(req, res) {
 
     });
   });
-    
+
 app.post("/login", login.login);
 
 //setup the handlers
@@ -84,10 +84,13 @@ app.get("/home",  function(req, res){
 });
 //app.use(checkUser);
 
-
+app.get('/logout', function(req, res){
+delete req.session.user
+res.redirect('/');
+});
 
 //setup the handlers
-app.get('/products', checkUser, products.show);
+app.get('/products', products.show);
 //app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id',products.update);
@@ -108,8 +111,7 @@ app.get('/sales/delete/:id', sales.delete);
 
 
 //setup the handlers
-app.get('/purchases', checkUser, purchases.show);
-//app.get('/products', products.show);
+app.get('/purchases', purchases.show);
 app.get('/purchases/edit/:id', purchases.get);
 app.post('/purchases/update/:id',  purchases.update);
 app.get('/purchases/add', purchases.showAdd);
@@ -122,7 +124,7 @@ app.get('/purchases/delete/:id',  purchases.delete);
 
 
 //setup the handlers
-app.get('/categories',checkUser, categories.show);
+app.get('/categories', categories.show);
 //app.get('/products', products.show);
 app.get('/categories/edit/:id', categories.get);
 app.post('/categories/update/:id',  categories.update);

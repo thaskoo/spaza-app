@@ -9,15 +9,17 @@ exports.login = function(req, res, next){
     connection.query('SELECT * FROM users where username = ?', username, function(err,users){
       var user = users[0];
       if(user === undefined) { // checking if users is on the database
-        res.redirect("/");
+        return res.redirect("/");
+        req.flash('message', 'go away');
       }
-       
+
           bcrypt.compare(password, user.password, function (err, pass) {
             if(pass) {
-              res.redirect("/home");
+              return res.redirect("/home");
             }
             else {
-              res.redirect("/");
+              return res.redirect("/");
+                req.flash('message', 'Welcome');
             }
     });
   });
