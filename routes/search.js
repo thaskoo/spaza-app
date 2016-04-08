@@ -15,3 +15,12 @@ $(document).ready(function(){
       });
     });
 });
+
+$(document).ready(function(){
+    $('search').keyup(function() {
+      var Value = $('#search').val();
+      $.get("/sales/search/" + Value, function(results) {
+        $('#sales').html(results);
+      });
+    });
+});
