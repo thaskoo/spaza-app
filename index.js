@@ -136,6 +136,7 @@ app.get('/categories/mostCategory',  categories.mostPopularCat);
 app.get('/categories/leastPopularCategory', categories.leastPopularCat);
 app.get('/categories/CategoryEarnings',  categories.EarningperCat);
 app.get('/categories/CategoryProfit', categories.ProfitperCat);
+app.post('/categories/search',  categories.search);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete);
 

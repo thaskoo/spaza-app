@@ -103,6 +103,18 @@ exports.EarningperCat = function(req, res, next){
     		});
 		});
 		};
+		exports.search = function(req, res, next){
+			req.getConnection(function(err, connection){
+			var searchVal = '%'+ req.body.searchVal +'%';
+			connection.query('SELECT category_id, category_name from categories where category_name like ?',[searchVal] ,function(err, results) {
+					if (err)
+							return next(err);
+									res.render('categories',{
+									categories : results
+						});
+					});
+				});
+	};
 		exports.ProfitperCat = function(req, res, next){
 	req.getConnection(function(err, connection){
 	connection.query('SELECT categories.category_name, SUM(sales.sales_price) - SUM(purchases.cost_price)AS profit FROM sales INNER JOIN products ON sales.product_id = products.product_id INNER JOIN purchases ON sales.product_id = purchases.product_id INNER JOIN categories ON categories.category_id = products.category_id GROUP BY categories.category_name ORDER BY profit DESC', [], function(err, rows){

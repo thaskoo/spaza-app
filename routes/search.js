@@ -6,3 +6,12 @@ $(document).ready(function(){
       });
     });
 });
+
+$(document).ready(function(){
+    $('search').keyup(function() {
+      var Value = $('#search').val();
+      $.get("/categories/search/" + Value, function(results) {
+        $('#categories').html(results);
+      });
+    });
+});
