@@ -10,7 +10,7 @@ var bcrypt = require('bcrypt');
 				var data = {
       				username : input.username,
 		     		     roles : "admin"
-  	};
+  	}; 
 
   	 bcrypt.genSalt(10, function(err, salt) {
       	bcrypt.hash(password, salt, function(err, hash) {

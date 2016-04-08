@@ -10,9 +10,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
-th {
+/*th {
       font-size: medium;
-}
+}*/
 
 article,
 aside,
@@ -184,7 +184,7 @@ optgroup {
 }
 table {
   border-spacing: 0;
-  border-collapse: collapse;
+  /*border-collapse: collapse;*/
 }
 td,
 th {

@@ -1,0 +1,26 @@
+<h1>Search</h1>
+						<div class ="container" >
+						  <table class ="col-xs-8">
+						    <tr>
+						      <thead>
+						        <th>Id</th>
+						        <th>Product Name</th>
+						        <th>Edit/delete</th>
+
+						      </thead>
+						        </tr>
+						<tbody>
+						  {{#products}}
+						    <tr>
+						          <td>{{product_id}}</td>
+						    			<td>{{product_name}}</td>
+						    <td>
+						      <a href="/products/edit/{{id}}">Edit</a>
+						      <a href="/products/delete/{{id}}">Delete</a>
+						  </td>
+						    </tr>
+						  {{/products}}
+						</tbody>
+						  </table>
+						  </div>
+<a href="/products">Show All Products</a>

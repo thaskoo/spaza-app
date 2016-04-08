@@ -96,6 +96,11 @@ app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id',products.update);
 app.get('/products/addprod',  products.showAdd);
 app.post('/products/add',  products.add);
+app.get('/products/mostPopularItem', products.mostPopularProduct);
+app.get('/products/leastPopularProduct', products.leastpopularProd);
+app.get('/products/ProductEarnings',  products.EarningperProd);
+app.post('/products/search',  products.search);
+
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
 
@@ -116,9 +121,6 @@ app.get('/purchases/edit/:id', purchases.get);
 app.post('/purchases/update/:id',  purchases.update);
 app.get('/purchases/add', purchases.showAdd);
 app.post('/purchases/add', purchases.add);
-app.get('/products/mostPopularItem', products.mostPopularProduct);
-app.get('/products/leastPopularProduct', products.leastpopularProd);
-app.get('/products/ProductEarnings',  products.EarningperProd);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/purchases/delete/:id',  purchases.delete);
 
@@ -143,4 +145,4 @@ var portNumber = process.env.CRUD_PORT_NR || 3001;
 //start everything up
 app.listen(portNumber, function () {
     console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
-});
+  });

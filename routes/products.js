@@ -1,15 +1,15 @@
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
-		   connection.query('SELECT * from products', [], function(err, results) {
+		   connection.query('SELECT product_id, product_name FROM products', [], function(err, results) {
         	     if (err) return next(err);
-    		      res.render( 'home2', {
+    		      res.render( 'productlist', {
 		        no_products : results.length === 0,
 		           products : results
     	});
     	});
      });
-   
+
 };
 
 exports.showAdd = function(req, res){
@@ -61,7 +61,7 @@ exports.leastpopularProd =function(req, res, next){
 exports.EarningperProd = function(req, res, next){
 	req.getConnection(function(err, connection){
 	connection.query('SELECT products.product_name, SUM(sales.qty * sales.sales_price)AS Earnings FROM sales INNER JOIN products ON sales.product_id = products.product_id INNER JOIN categories ON categories.category_id = products.category_id GROUP BY products.product_name ORDER BY Earnings DESC', [], function(err, rows){
-    		   if (err) 
+    		   if (err)
     		   	return next(err);
     		   res.render('ProductEarnings', {
     		   	 ProductEarnings: rows
@@ -69,6 +69,19 @@ exports.EarningperProd = function(req, res, next){
     		});
 		});
 		};
+		exports.search = function(req, res, next){
+			req.getConnection(function(err, connection){
+			var searchVal = '%'+ req.body.searchVal +'%';
+			connection.query('SELECT product_name from products where product_name like ?',[searchVal] ,function(err, results) {
+					if (err)
+							return next(err);
+									res.render('Search',{
+			 						products : results
+		 				});
+					});
+				});
+	};
+
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){
