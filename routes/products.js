@@ -72,10 +72,10 @@ exports.EarningperProd = function(req, res, next){
 		exports.search = function(req, res, next){
 			req.getConnection(function(err, connection){
 			var searchVal = '%'+ req.body.searchVal +'%';
-			connection.query('SELECT product_name from products where product_name like ?',[searchVal] ,function(err, results) {
+			connection.query('SELECT product_id, product_name from products where product_name like ?',[searchVal] ,function(err, results) {
 					if (err)
 							return next(err);
-									res.render('Search',{
+									res.render('productlist',{
 			 						products : results
 		 				});
 					});
