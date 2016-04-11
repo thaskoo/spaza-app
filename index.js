@@ -16,7 +16,7 @@ var app = express();
 var dbOptions = {
       host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'root',
       port: 3306,
       database: 'spaza_app'
 };
@@ -159,8 +159,5 @@ var portNumber = process.env.CRUD_PORT_NR || 3001;
 //start everything up
 app.listen(portNumber, function () {
     console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
-<<<<<<< HEAD
+
 });
-=======
-  });
->>>>>>> ee4ac135d65d4b9ed6efdc8303e2c43b04ef4c36
