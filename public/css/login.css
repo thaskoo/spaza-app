@@ -1,0 +1,75 @@
+html, body {
+  padding: 10px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  background: aqua;
+  text-align: center;
+  border-radius: 50px;
+}
+
+#login-area form input[type="text"], form input[type="password"]  {
+  box-shadow: inset 0 0 10px;
+  padding: 10px 10px;
+  border: 1px solid #AAA;
+  font-size: 1.1em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #EEE;
+  display: block;
+  width: 95%;
+}
+
+#login-area form label {
+  font-size: 1.1em;
+}
+
+#login-area {
+  background: #FFF;
+  padding: 20px;
+  box-shadow: 0 0 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 19px;
+  display: inline-block;
+  width: 30%;
+}
+#login-area fieldset {
+  margin: 0;
+  padding: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 19px;
+}
+
+.button1 {
+  background-color: #444;
+  font-size: 1em;
+  padding: 10px 25px;
+  box-shadow: 0 10px #333;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFF;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.button2{
+  background-color: #444;
+  font-size: 1em;
+  padding: 10px 25px;
+  box-shadow: 0 10px #333;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFF;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+/*.button2:active {
+  box-shadow: 0px #333;
+  position: relative;
+  bottom: -5px;
+}*/

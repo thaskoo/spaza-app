@@ -1,4 +1,20 @@
-<h3>leastPopular Category</h3>
-{{#each product}}
-<h2>{{@key}} -{{this}}</h2>
-{{/each}}
+<h1>leastPopularCategory<h1>
+<div class="container">
+<table class="col-xs-12">
+<thead>
+
+	<th>product Name</th>
+	<th>Quantity</th>
+
+</thead>
+
+{{#leastPopularCategory}}
+<tr>
+
+	<td>{{category_name}}</td>
+	<td>{{qty}}</td>
+
+</tr>
+{{/leastPopularCategory}}
+</table>
+</div>

@@ -1,27 +1,30 @@
-<h1>Category List</h1>
-<a href="/categories/add">Add category</a>
+<form class ="navbar-form navbar-left" role ="search" action ="/categories/search" method="post">
+       <div class = "form-group">
+      <input type="text" class="form-control" placeholder="Search" id="search" name="searchVal">
+  <input type="submit">
+</div>
+</form>
 
-{{#no_products}}
+<!-- {{#no_products}}
 <p>No</p>
-{{/no_products}}
+{{/no_products}} -->
 
 
 <div class="container">
 <table class="col-xs-12">
-	<table>
-	<thead>
-	<tr>
-	<th>Category</th>
-	<th>Edit/Delete</th>
+		<tr>
+      <thead>
+        <th>Category Name</th>
+        <th>Edit/delete</th>
 
-	</tr>
-	</thead>
+      </thead>
+      </tr>
 	<tbody>
 	{{#categories}}
 	<tr>
 	<td>{{category_name}}</td>
 
-	   <td> 
+	   <td>
 	       <a href="/categories/edit/{{category_id}}">Edit</a>
            <a href="/categories/delete/{{category_id}}">Delete</a>
      </td>
@@ -30,3 +33,4 @@
 		  </tbody>
 </table>
 </div>
+<a href="/categories">Show All Categories</a>

@@ -1,21 +1,23 @@
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
-		   connection.query('SELECT * from products', [], function(err, results) {
+		   connection.query('SELECT product_id, product_name FROM products', [], function(err, results) {
         	     if (err) return next(err);
-    		      res.render( 'home', {
+    		      res.render( 'productlist', {
 		        no_products : results.length === 0,
 		           products : results
     	});
     	});
      });
-   
+
 };
 
 exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
-		 connection.query('SELECT * from categories', [], function(err, categories) {
-		    res.render('add', {categories:categories});
+		 connection.query('SELECT * from categories', [], function(err, rows) {
+		    res.render('addprod', {
+		    	categories:rows
+		    });
    });
  });
 };
@@ -36,6 +38,50 @@ exports.add = function (req, res, next) {
 		});
 	});
 };
+exports.mostPopularProduct =function(req, res, next){
+		req.getConnection(function(err, connection){
+		   connection.query('SELECT products.product_name, SUM( sales.qty ) AS qty FROM sales INNER JOIN products ON sales.product_id = products.product_id GROUP BY products.product_name ORDER BY qty DESC LIMIT 1', [], function(err, rows){
+    		   if (err) next(err);
+    		   res.render('mostPopularItem', {
+    		   	mostPopularItem : rows
+    		   });
+    		});
+		});
+};
+exports.leastpopularProd =function(req, res, next){
+		req.getConnection(function(err, connection){
+		   connection.query('SELECT products.product_name, SUM( sales.qty ) AS qty FROM sales INNER JOIN products ON sales.product_id = products.product_id GROUP BY products.product_name ORDER BY qty ASC LIMIT 1', [], function(err, rows){
+    		   if (err) next(err);
+    		   res.render('leastPopularProduct', {
+    		   	leastPopularProduct: rows
+    		   });
+    		});
+		});
+};
+exports.EarningperProd = function(req, res, next){
+	req.getConnection(function(err, connection){
+	connection.query('SELECT products.product_name, SUM(sales.qty * sales.sales_price)AS Earnings FROM sales INNER JOIN products ON sales.product_id = products.product_id INNER JOIN categories ON categories.category_id = products.category_id GROUP BY products.product_name ORDER BY Earnings DESC', [], function(err, rows){
+    		   if (err)
+    		   	return next(err);
+    		   res.render('ProductEarnings', {
+    		   	 ProductEarnings: rows
+    		   });
+    		});
+		});
+		};
+		exports.search = function(req, res, next){
+			req.getConnection(function(err, connection){
+			var searchVal = '%'+ req.body.searchVal +'%';
+			connection.query('SELECT product_id, product_name from products where product_name like ?',[searchVal] ,function(err, results) {
+					if (err)
+							return next(err);
+									res.render('productlist',{
+			 						products : results
+		 				});
+					});
+				});
+	};
+
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	   req.getConnection(function(err, connection){
@@ -50,7 +96,7 @@ exports.get = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
            var id = req.params.id;
               req.getConnection(function(err, connection){
-		 connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
+		 connection.query('UPDATE products SET ? WHERE product_id = ?', [data, id], function(err, rows){
     		   if (err) next(err);
             res.redirect('/products');
     		});

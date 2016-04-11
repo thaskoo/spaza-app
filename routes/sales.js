@@ -35,7 +35,7 @@ exports.add = function (req, res, next) {
       		sales_date : input.sales_date,
 		    sales_price : input.sales_price,
 		    qty : input.qty
-		 
+
   	};
 		connection.query('insert into sales set ?', data, function(err, results) {
   		if (err) return next(err);
@@ -57,8 +57,20 @@ exports.get = function(req, res, next){
 				});
 	       	});
   		});
-	});		
+	});
 };
+exports.search = function(req, res, next){
+	req.getConnection(function(err, connection){
+	var searchVal = '%'+ req.body.searchVal +'%';
+	connection.query('SELECT sale_id, product_name,DATE_FORMAT(sales_date,"%d %M %y") AS sales_date , sales_price, qty, product_name from sales INNER JOIN products ON products.product_id = sales.product_id where product_name like ?',[searchVal],function(err, results){
+			if (err)
+					return next(err);
+							res.render('sales',{
+							sales: results
+				});
+			});
+		});
+	};
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
@@ -67,17 +79,7 @@ exports.update = function(req, res, next){
 		        connection.query('UPDATE sales SET ? WHERE id = ?', [data,id], function(err, rows){
     		   if (err) next(err);
                 res.redirect('/sales');
-
-                     /*editSales = {
-                     	product_id : input.product_id,
-                     	product_name : input.product_name,
-                     	sales_date : input.sales_date,
-		                sales_price : input.sales_price,
-		                qty : input.qty
-                     }
-                     */
     		});
-
     });
 };
 exports.delete = function(req, res, next){
