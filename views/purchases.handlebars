@@ -1,18 +1,18 @@
-<h1>Add purchases</h1>
-<form action="/purchases/add" method="POST">
+<form class ="navbar-form navbar-left" role ="search" action ="/purchases/search" method="post">
+       <div class = "form-group">
+      <input type="text" class="form-control" placeholder="Search" id="search" name="searchVal">
+  <input type="submit">
+</div>
+</form>
 
-<select name ="product_id">
-
+<!-- <select name ="product_id">
 	{{#products}}
 	<option value = "{{product_name}}">{{product_name}}</option>
 	{{/products}}
 	</select>
-
      qty: <input type="number" name="qty" value="{{qty}}">
      cost_price: <input type="price" name="cost_price" value="{{cost_price}}">
 	stock_date: <input type="date" name="stock_date" value="{{stock_date}}">
-	
-
 	<select name ="supplier_id">
 
 	{{#suppliers}}
@@ -20,12 +20,9 @@
 	{{/suppliers}}
 	</select>
 
-	<input type="submit">
-
-</form>
+	<input type="submit"> -->
 
 <h1>Purchases Records</h1>
-<div class="container">
 <table class="col-xs-12">
 
 	<tr><thead>
@@ -47,7 +44,7 @@
 <td>{{supplier_name}}</td>
 
 
-<td> 
+<td>
 	<a href="/puchases/edit/{{id}}">Edit</a>
      <a href="/purchase/delete/{{id}}">Delete</a>
 </td>
@@ -55,4 +52,4 @@
 {{/purchases}}
 </tbody>
 </table>
-</div
+  <a href="/purchases">Show All purchases</a>

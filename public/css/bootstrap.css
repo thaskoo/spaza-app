@@ -4397,15 +4397,15 @@ body {
     vertical-align: middle;
   }
   .navbar-form .form-control {
-    display: inline-block;
+    /*display: inline-block;*/
     width: auto;
-    vertical-align: middle;
+    /*vertical-align: right;*/
   }
   .navbar-form .form-control-static {
-    display: inline-block;
+    /*display: inline-block;*/
   }
   .navbar-form .input-group {
-    display: inline-table;
+    /*display: inline-table;*/
     vertical-align: middle;
   }
   .navbar-form .input-group .input-group-addon,

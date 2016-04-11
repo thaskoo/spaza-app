@@ -31,8 +31,8 @@ exports.add = function (req, res, next) {
 		if (err) return next(err);
 		var input = JSON.parse(JSON.stringify(req.body));
 
-		var data = {
-      		product_name : input.product_name,
+				var data = {
+      	product_name : input.product_name,
 		   qty : input.qty,
 		   stock_date : input.stock_date,
 		   cost_price : input.cost_price,
@@ -54,8 +54,19 @@ exports.get = function(req, res, next){
 			});
 		});
 	};
+	exports.search = function(req, res, next){
+		req.getConnection(function(err, connection){
+		var searchVal = '%'+ req.body.searchVal +'%';
+		connection.query('SELECT products.product_name, purchases.qty, purchases.stock_date, purchases.cost_price, suppliers.supplier_name FROM purchases INNER JOIN products ON products.product_id = purchases.product_id INNER JOIN suppliers ON suppliers.supplier_id = purchases.supplier_id where product_name like ?',[searchVal],function(err, results){
+				if (err)
+						return next(err);
+								res.render('purchases',{
+								purchases: results
+					});
+				});
+			});
+		};
 	exports.update = function(req, res, next){
-
 	var data = JSON.parse(JSON.stringify(req.body));
            var id = req.params.id;
               req.getConnection(function(err, connection){

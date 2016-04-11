@@ -17,14 +17,12 @@ create table products(
 	     foreign key(category_id) REFERENCES categories(category_id),
 	     constraint uc_product_name unique (product_name)
 );
-
 DROP TABLE IF EXISTS `suppliers`;
-create table suppliers(
-   supplier_id int not null auto_increment,
-        supplier_name VARCHAR(50),
-	  primary key(supplier_id),
-	  constraint uc_product_name unique (supplier_name)
-);
+CREATE TABLE suppliers (
+	id int NOT NULL AUTO_INCREMENT,
+	supplier_name VARCHAR(50)NOT NULL,
+	primary key(id)
+	);
 
 DROP TABLE IF EXISTS `sales`;
 create table sales (
@@ -47,7 +45,7 @@ DROP TABLE IF EXISTS `purchases`;
 	supplier_id int,
 	 primary key(id),
 	 foreign key(product_id) REFERENCES products(product_id),
-	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)	
+	 foreign key(supplier_id) REFERENCES suppliers(supplier_id)
 	 );
 
 DROP TABLE if exist users;

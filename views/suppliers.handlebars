@@ -1,0 +1,32 @@
+<form class ="navbar-form navbar-left" role ="search" action ="/suppliers/search" method="post">
+       <div class = "form-group">
+      <input type="text" class="form-control" placeholder="Search" id="search" name="searchVal">
+  <input type="submit">
+</div>
+
+</form>
+
+<div class="container">
+  <table class="col-xs-6">
+    <tr>
+      <thead>
+        <th><h2>Supplier Name</h2></th>
+      </thead>
+    </tr>
+
+    <tbody>
+      {{#suppliers}}
+      <tr>
+		<td>{{supplier_name}}</td>
+
+		<td>
+  			<a href="/suppliers/editSuppliers/{{id}}">Edit</a>
+  			<a href="/suppliers/delete/{{id}}">Delete</a>
+		</td>
+
+	</tr>
+{{/suppliers}}
+</tbody>
+</table>
+</div>
+<a href="/suppliers">Show All suppliers</a>
