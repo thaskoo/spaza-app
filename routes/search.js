@@ -32,3 +32,11 @@ $(document).ready(function(){
       });
     });
 });
+$(document).ready(function(){
+    $('search').keyup(function() {
+      var Value = $('#search').val();
+      $.get("/suppliers/search/" + Value, function(results) {
+        $('#suppliers').html(results);
+      });
+    });
+});

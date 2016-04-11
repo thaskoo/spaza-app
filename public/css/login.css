@@ -1,10 +1,9 @@
 html, body {
   padding: 10px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  background:#3377ff;
-  /*background:#0000ff;*/
+  background: aqua;
   text-align: center;
-  border-radius: 45px;
+  border-radius: 50px;
 }
 
 #login-area form input[type="text"], form input[type="password"]  {
