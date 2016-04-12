@@ -76,7 +76,7 @@ exports.EarningperProd = function(req, res, next){
 					if (err)
 							return next(err);
 									res.render('productlist',{
-			 						products : results
+			 						products: results
 		 				});
 					});
 				});
