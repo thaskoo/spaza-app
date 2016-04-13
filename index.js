@@ -91,16 +91,15 @@ res.redirect('/');
 });
 
 //setup the handlers
+app.post('/products/search', products.search);
 app.get('/products', products.show);
-//app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id',products.update);
-app.get('/products/addprod',  products.showAdd);
-app.post('/products/add',  products.add);
+// app.get('/products/addprod',  products.showAdd);
+// app.post('/products/add',  products.add);
 app.get('/products/mostPopularItem', products.mostPopularProduct);
 app.get('/products/leastPopularProduct', products.leastpopularProd);
 app.get('/products/ProductEarnings',  products.EarningperProd);
-app.post('/products/search',  products.search);
 
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
@@ -154,7 +153,7 @@ app.post('/categories/search',  categories.search);
 app.get('/categories/delete/:id', categories.delete);
 
 //configure the port number using and environment number
-var portNumber = process.env.CRUD_PORT_NR || 3001;
+var portNumber = process.env.CRUD_PORT_NR || 3003;
 
 //start everything up
 app.listen(portNumber, function () {

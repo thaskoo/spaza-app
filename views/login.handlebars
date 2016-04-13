@@ -6,13 +6,15 @@
      {{msg}}
  </div>
  {{/if}}
- {{messages.message}}
- <div id="login-area">
+ <div id="container">
+    <div id="login-area">
  <form class="modal-header" action="/login" method="post">
-     <input type="text" name="username" value="" placeholder="username" required></br>
-     <input type="password" name="password" value="" placeholder="password" required></br>
+     <input type="text" name="username" value="" placeholder="Enter Username" required></br>
+     <input type="password" name="password" value="" placeholder="Enter Password" required></br>
      <input type="submit" name="name" value="login">
      <p class="signup">Don't have an Account ? <a href="signUp">sign up</a></p>
  </form>
+ {{messages.message}}
+
   </fieldset>
 </div>
