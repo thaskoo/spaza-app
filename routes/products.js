@@ -71,14 +71,13 @@ exports.EarningperProd = function(req, res, next){
 		};
 		exports.search = function(req, res, next){
 			req.getConnection(function(err, connection){
- 			var searchVal = '%'+ req.body.searchVal +'%';
+ 			var searchVal = '%'+ req.params.searchVal +'%';
 			console.log(searchVal);
 			connection.query('SELECT product_id, product_name from products where product_name like ?',[searchVal] ,function(err, results) {
-					if (err)
-							return next(err);
-									res.render('productlist',{
-			 						products: results
-									// layout: false
+					if (err) return next(err);
+									res.render('search_products',{
+			 						products: results,
+									layout: false
 		 				});
 					});
 				});

@@ -1,0 +1,24 @@
+<div class="container">
+<table class="col-xs-12">
+		<tr>
+      <thead>
+        <th>Category Name</th>
+        <th>Edit/delete</th>
+
+      </thead>
+      </tr>
+	<tbody>
+	{{#categories}}
+	<tr>
+	<td>{{category_name}}</td>
+
+	   <td>
+	       <a href="/categories/edit/{{category_id}}">Edit</a>
+           <a href="/categories/delete/{{category_id}}">Delete</a>
+     </td>
+		  </tr>
+		  {{/categories}}
+		  </tbody>
+</table>
+</div>
+<a href="/categories"><button>Show All Categories</button></a>

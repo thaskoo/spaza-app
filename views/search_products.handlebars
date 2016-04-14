@@ -1,25 +1,31 @@
-<div class ="container" >
-	<table class ="col-xs-4">
-		<tr>
-			<thead>
-				<th>Id</th>
-				<th>Product Name</th>
-				<th>Edit/delete</th>
+<!-- <form class ="navbar-form navbar-left" role ="search" action ="/products/search/:searchVal" method="post">
+       <div class = "form-group">
+      <input type="text" class="form-control" placeholder="Search..." id ="search" name="searchVal">
+  <input type="submit">
+</div>
+</form> -->
+<!-- <div class ="container" >
+  <table class ="col-xs-8" id="products"> -->
+    <tr>
+      <thead>
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Edit/delete</th>
 
-			</thead>
-				</tr>
+      </thead>
+        </tr>
 <tbody>
-	{{#products}}
-		<tr>
-					<td>{{product_id}}</td>
-					<td>{{product_name}}</td>
-		<td>
-			<a href="/products/edit/{{id}}">Edit</a>
-			<a href="/products/delete/{{id}}">Delete</a>
-	</td>
-		</tr>
-	{{/products}}
+  {{#products}}
+    <tr>
+          <td>{{product_id}}</td>
+    			<td>{{product_name}}</td>
+    <td>
+      <a href="/products/edit/{{id}}">Edit</a>
+      <a href="/products/delete/{{id}}">Delete</a>
+  </td>
+    </tr>
+  {{/products}}
 </tbody>
-	</table>
-	</div>
-	<a href="/products">Show All Products</a>
+  <!-- </table>
+  </div> -->
+  <a href="/products"><button>Show All Products</button></a>

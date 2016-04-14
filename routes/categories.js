@@ -105,12 +105,13 @@ exports.EarningperCat = function(req, res, next){
 		};
 		exports.search = function(req, res, next){
 			req.getConnection(function(err, connection){
-			var searchVal = '%'+ req.body.searchVal +'%';
+			var searchVal = '%'+ req.params.searchVal +'%';
 			connection.query('SELECT category_id, category_name from categories where category_name like ?',[searchVal] ,function(err, results) {
 					if (err)
 							return next(err);
-									res.render('categories',{
-									categories : results
+									res.render('search_categories',{
+									categories : results,
+									layout: false
 						});
 					});
 				});
