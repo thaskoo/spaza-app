@@ -1,0 +1,29 @@
+<table class ="table table table-bordered" id ="sales">
+  <tr>
+    <thead>
+
+      <th>Product Name</th>
+			<th>Sales date</th>
+			<th>Sales Price</th>
+			<th>quantity</th>
+      <th>Edit/delete</th>
+
+    </thead>
+      </tr>
+<tbody>
+{{#sales}}
+  <tr>
+        <td>{{product_name}}</td>
+				<td>{{sales_date}}</td>
+				<td>{{sales_price}}</td>
+				<td>{{qty}}</td>
+
+        <td>
+        	<a href="/sales/editSales/{{sale_id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a href="/sales/delete/{{sale_id}}"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+  </tr>
+{{/sales}}
+</tbody>
+<a href="/sales"><button>Show All Products</button></a>
+</table>

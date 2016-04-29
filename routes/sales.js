@@ -61,12 +61,13 @@ exports.get = function(req, res, next){
 };
 exports.search = function(req, res, next){
 	req.getConnection(function(err, connection){
-	var searchVal = '%'+ req.body.searchVal +'%';
+	var searchVal = '%'+ req.params.searchVal +'%';
 	connection.query('SELECT sale_id, product_name,DATE_FORMAT(sales_date,"%d %M %y") AS sales_date , sales_price, qty, product_name from sales INNER JOIN products ON products.product_id = sales.product_id where product_name like ?',[searchVal],function(err, results){
 			if (err)
 					return next(err);
-							res.render('sales',{
-							sales: results
+							res.render('search_sales',{
+							sales: results,
+							layout: false
 				});
 			});
 		});

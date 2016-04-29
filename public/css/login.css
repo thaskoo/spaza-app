@@ -1,6 +1,6 @@
 body {
   padding: 10px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  /*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
   text-align: center;
   border-radius: 50px;
   background: #a9d5ff;
@@ -20,7 +20,7 @@ modal-header {
   border-radius: 25px;
   display: block;
   width: 95%;
-  background: white;
+  /*background: white;*/
 
 }
 #login-area form label {

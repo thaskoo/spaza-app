@@ -1,5 +1,5 @@
 <div class="container">
-<table class="col-xs-12">
+<table class="table table-bordered" id="categories">
 		<tr>
       <thead>
         <th>Category Name</th>
@@ -13,8 +13,9 @@
 	<td>{{category_name}}</td>
 
 	   <td>
-	       <a href="/categories/edit/{{category_id}}">Edit</a>
-           <a href="/categories/delete/{{category_id}}">Delete</a>
+			 <a href="/categories/edit/{{category_id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+				<a href="/categories/delete/{{category_id}}"><span class="glyphicon glyphicon-trash"></span></a>
+	 </td>
      </td>
 		  </tr>
 		  {{/categories}}

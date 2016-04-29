@@ -69,6 +69,17 @@ exports.EarningperProd = function(req, res, next){
     		});
 		});
 		};
+		exports.ProfitperProd = function(req, res, next){
+			req.getConnection(function(err, connection){
+			connection.query('SELECT product_name, supplier_name, SUM(sales_price-cost_price) AS profit FROM products, sales, purchases, suppliers WHERE products.product_id = sales.product_id And sales.product_id = purchases.product_id AND purchases.supplier_id = suppliers.supplier_id GROUP BY product_name  ORDER BY Profit DESC', [], function(err, rows){
+		    		   if (err)
+		    		   	return next(err);
+		    		   res.render('ProductProfit', {
+		    		   	 ProductProfit: rows
+		    		   });
+		    		});
+				});
+				};
 		exports.search = function(req, res, next){
 			req.getConnection(function(err, connection){
  			var searchVal = '%'+ req.params.searchVal +'%';

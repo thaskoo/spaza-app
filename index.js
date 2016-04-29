@@ -100,11 +100,13 @@ app.post('/products/update/:id',products.update);
 app.get('/products/mostPopularItem', products.mostPopularProduct);
 app.get('/products/leastPopularProduct', products.leastpopularProd);
 app.get('/products/ProductEarnings',  products.EarningperProd);
+app.get('/products/ProductProfit',  products.ProfitperProd);
 
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
 
 //app.get('/', sales.show);
+app.get('/sales/search/:searchVal',  sales.search);
 app.get('/sales', sales.show);
 //app.get('/sales/addSales', sales.get);
 app.get('/sales/editSales/:id', sales.get);
@@ -117,24 +119,25 @@ app.get('/sales/delete/:id', sales.delete);
 
 
 //setup the handlers
+app.get('/purchases/search/:searchVal',  purchases.search);
 app.get('/purchases', purchases.show);
 app.get('/purchases/edit/:id', purchases.get);
 app.post('/purchases/update/:id',  purchases.update);
 app.get('/purchases/add', purchases.showAdd);
 app.post('/purchases/add', purchases.add);
-app.post('/purchases/search',  purchases.search);
 // app.post('/purchases/search',  purchases.search);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/purchases/delete/:id',  purchases.delete);
 
 //setup the handlers
+app.get('/suppliers/search/:searchVal',  suppliers.search);
 app.get('/suppliers', suppliers.show);
 app.get('/suppliers/editSuppliers/:id', suppliers.get);
 app.post('/suppliers/update/:id', suppliers.update);
 app.get('suppliers/add', suppliers.showAddSuppliers);
 app.post('/suppliers/add', suppliers.add);
 app.post('/suppliers/search',  suppliers.search);
-app.get('/suppliers/search',  suppliers.search);
+
 app.get('/suppliers/delete/:id', suppliers.delete);
 
 //setup the handlers

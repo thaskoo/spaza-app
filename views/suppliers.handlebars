@@ -7,17 +7,16 @@
 	    text-align: left;
 	}
 		</style>
-	</head>  
+	</head>
 <form class ="navbar-form navbar-left" role ="search" action ="/suppliers/search" method="post">
        <div class = "form-group">
       <input type="text" class="form-control" placeholder="Search" id="search" name="searchVal">
-  <input type="submit">
 </div>
 
 </form>
 
 <div class="container">
-  <table class="col-xs-6">
+  <table class="table table-bordered" id="suppliers">
     <tr>
       <thead>
         <th><h2>Supplier Name</h2></th>
@@ -30,8 +29,8 @@
 		<td>{{supplier_name}}</td>
 
 		<td>
-  			<a href="/suppliers/editSuppliers/{{id}}">Edit</a>
-  			<a href="/suppliers/delete/{{id}}">Delete</a>
+  			<a href="/suppliers/editSuppliers/{{id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+  			<a href="/suppliers/delete/{{id}}"><span class="glyphicon glyphicon-trash"></span></a>
 		</td>
 
 	</tr>
@@ -39,4 +38,4 @@
 </tbody>
 </table>
 </div>
-<a href="/suppliers">Show All suppliers</a>
+<!-- <a href="/suppliers">Show All suppliers</a> -->

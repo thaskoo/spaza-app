@@ -1,0 +1,23 @@
+<table class ="table table-bordered" id="suppliers">
+  <tr>
+    <thead>
+
+      <th>Supplier Name</th>
+      <th>Edit/delete</th>
+
+    </thead>
+      </tr>
+<tbody>
+{{#suppliers}}
+  <tr>
+        <td>{{supplier_name}}</td>
+  <td>
+      <a href="/suppliers/edit/{{id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a href="/suppliers/delete/{{id}}"><span class="glyphicon glyphicon-trash"></span></a>
+</td>
+  </tr>
+{{/suppliers}}
+</tbody>
+<a href="/suppliers"><button>Show All Products</button></a>
+
+</table>

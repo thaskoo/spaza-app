@@ -11,12 +11,11 @@
 <form class ="navbar-form navbar-left" role ="search" action ="/sales/search" method="post">
        <div class = "form-group">
       <input type="text" class="form-control" placeholder="Search" id="search" name="searchVal">
-  <input type="submit">
 </div>
 </form>
 <h1>Sales Records</h1>
 <div class="container">
-<table class="col-xs-12">
+<table class="table table-bordered" id="sales">
 
 	<tr><thead>
 	<th>product name</th>
@@ -35,8 +34,8 @@
 <td>{{qty}}</td>
 
 <td>
-	<a href="/sales/editSales/{{sale_id}}">Edit</a>
-     <a href="/sales/delete/{{sale_id}}">Delete</a>
+	<a href="/sales/editSales/{{sale_id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+  <a href="/sales/delete/{{sale_id}}"><span class="glyphicon glyphicon-trash"></span></a>
 </td>
 </tr>
 {{/sales}}

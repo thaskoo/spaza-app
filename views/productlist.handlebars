@@ -17,7 +17,7 @@
 </form>
 
 <div class ="container" >
-  <table class ="col-xs-6" id="products">
+  <table class ="table table-bordered" id="products">
     <tr>
       <thead>
         <th>Id</th>
@@ -32,8 +32,8 @@
           <td>{{product_id}}</td>
     			<td>{{product_name}}</td>
     <td>
-      <a href="/products/edit/{{id}}">Edit</a>
-      <a href="/products/delete/{{id}}">Delete</a>
+      <a href="/products/edit/{{id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a href="/products/delete/{{id}}"><span class="glyphicon glyphicon-trash"></span></a>
   </td>
     </tr>
   {{/products}}

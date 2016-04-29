@@ -22,12 +22,13 @@ exports.showAddSuppliers = function (req, res) {
 };
 exports.search = function(req, res, next){
 	req.getConnection(function(err, connection){
-	var searchVal = '%'+ req.body.searchVal +'%';
+	var searchVal = '%'+ req.params.searchVal +'%';
 	connection.query('SELECT supplier_name from suppliers where supplier_name like ?',[searchVal] ,function(err, results) {
 			if (err)
 					return next(err);
-							res.render('suppliers',{
-							suppliers : results
+							res.render('search_suppliers',{
+							suppliers : results,
+							layout: false
 				});
 			});
 		});

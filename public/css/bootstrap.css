@@ -29,8 +29,8 @@ h1 {
   text-align: center;
 }
 mark {
-  color: #000;
-  background: #ff0;
+  /*color: #000;
+  background: #ff0;*/
 }
 small {
   font-size: 80%;
@@ -1041,16 +1041,6 @@ th {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-/*html {
-  font-size: 10px;
-}
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  background: #3377ff;
-}*/
 input,
 button,
 select,
@@ -1380,7 +1370,7 @@ blockquote .small {
   display: block;
   font-size: 80%;
   line-height: 1.42857143;
-  color: #777;
+  /*color: #777;*/
 }
 blockquote footer:before,
 blockquote small:before,

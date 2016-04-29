@@ -1,4 +1,29 @@
-SELECT products.product_name, SUM(sales.sales_price) - SUM(purchases.cost_price)AS profit
- FROM sales,purchases,products 
- GROUP BY products.product_name 
-ORDER BY profit DESC;
+<doctype html>
+	<html>
+	<head>
+		<style>
+		th, td {
+	    padding: 15px;
+	    text-align: left;
+	}
+		</style>
+	</head>
+	<h1>ProfitPerProduct<h1>
+		<table class ="table table table-bordered">
+	<thead>
+	<tr>
+	<th>Product Name</th>
+  	<th>Supplier Name</th>
+	<th>Profit Per Product</th>
+
+	</tr>
+	</thead>
+
+{{#ProductProfit}}
+<tr>
+	<td>{{product_name}}</td>
+  <td>{{supplier_name}}</td>
+	<td>R{{profit}}<td>
+</tr>
+{{/ProductProfit}}
+</table>

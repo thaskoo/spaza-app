@@ -1,0 +1,30 @@
+<table class="table table-bordered" id="purchases">
+
+	<tr><thead>
+	<th>Product Name</th>
+	<th>Quantity</th>
+	<th>cost-price</th>
+	<th>stock-date</th>
+	<th>supplier-name</th>
+	<th>edit/delete</th>
+
+</tr></thead>
+<tbody>
+ {{#purchases}}
+<tr>
+<td>{{product_name}}</td>
+<td>{{qty}}</td>
+<td>R{{cost_price}}</td>
+<td>{{stock_date}}</td>
+<td>{{supplier_name}}</td>
+
+
+<td>
+	<a href="/puchases/edit/{{id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="/purchase/delete/{{id}}"><span class="glyphicon glyphicon-trash"></span></a>
+</td>
+</tr>
+{{/purchases}}
+</tbody>
+</table>
+    <a href="/purchases"><button>Show All Purchases</button></a>
